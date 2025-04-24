@@ -15,7 +15,7 @@ return new class extends Migration
             $table->increments('id')->primary();
             $table->date('fecha');
             $table->decimal('importe', 8, 2);
-            $table->enum('estadoPago', ['pendiente', 'pagado', 'cancelado']);
+            $table->enum('estadoPago', ['pendiente', 'pagado', 'cancelado'])->default('pendiente');
             $table->unsignedInteger('idOptica')->nullable();
             $table->unsignedInteger('idCliente')->nullable();
 

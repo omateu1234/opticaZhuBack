@@ -26,6 +26,14 @@ class DatabaseSeeder extends Seeder
             FestivosSeeder::class,
             CitaSeeder::class,
             AsignarOpticaSeeder::class,
+            ProveedorSeeder::class,
+            PedidoSeeder::class,
+            FacturaPedidoSeeder::class,
+            ArticuloSeeder::class,
+            LineaPedidoSeeder::class,
+            VentaSeeder::class,
+            FacturaVentaSeeder::class,
+            LineaVentaSeeder::class,
 
         ]);
     }

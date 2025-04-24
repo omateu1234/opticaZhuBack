@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('pedidos', function (Blueprint $table) {
             $table->increments('id')->primary();
             $table->date('fecha');
-            $table->enum('estado', ['pendiente','recibido', 'cancelado']);
+            $table->enum('estado', ['pendiente','recibido', 'cancelado'])->default('pendiente');
             $table->string('telefono', 15);
             $table->unsignedInteger('idAuxiliar')->nullable();
             $table->unsignedInteger('idProveedor')->nullable();

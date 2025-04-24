@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('factura_venta', function (Blueprint $table) {
             $table->increments('id')->primary();
             $table->date('fecha');
-            $table->enum('estadoPago', ['pendiente','pagado', 'cancelado']);
+            $table->enum('estadoPago', ['pendiente','pagado', 'cancelado'])->default('pendiente');
             $table->unsignedInteger('idVenta')->nullable();
 
             $table->foreign('idVenta')->references('id')->on('ventas')->onDelete('cascade')->onUpdate('cascade');

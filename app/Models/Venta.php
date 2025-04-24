@@ -22,12 +22,12 @@ class Venta extends Model
 
     public function facturaVenta()
     {
-        return $this->hasOne(FacturaVenta::class, 'idVenta');
+        return $this->hasOne(FacturaVenta::class);
     }
 
     public function lineasVenta()
     {
-        return $this->hasMany(LineaVenta::class, 'idVenta');
+        return $this->hasMany(LineaVenta::class);
     }
 
 }

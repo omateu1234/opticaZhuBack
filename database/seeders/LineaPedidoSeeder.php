@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Articulo;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon; // Import Carbon here
 
@@ -19,41 +20,43 @@ class LineaPedidoSeeder extends Seeder
 
         $lineaPedidos=[
             [
-                'fecha' => Carbon::now()->subDays(5),
-                'importe' => 49.99,
+                'cantidad' => 2,
                 'idPedido' => 1,
                 'idArticulo' => 1,
             ],
             [
-                'fecha' => Carbon::now()->subDays(4),
-                'importe' => 29.90,
+                'cantidad' => 1,
                 'idPedido' => 2,
                 'idArticulo' => 2,
             ],
             [
-                'fecha' => Carbon::now()->subDays(3),
-                'importe' => 9.99,
+                'cantidad' => 4,
                 'idPedido' => 3,
                 'idArticulo' => 3,
             ],
             [
-                'fecha' => Carbon::now()->subDays(2),
-                'importe' => 4.50,
+                'cantidad' => 1,
                 'idPedido' => 4,
                 'idArticulo' => 4,
             ],
             [
-                'fecha' => Carbon::now()->subDay(),
-                'importe' => 120.00,
+                'cantidad' => 3,
                 'idPedido' => 5,
                 'idArticulo' => 5,
             ],
         ];
 
         foreach ($lineaPedidos as $lineaPedido){
+
+            $articulo= Articulo::find($lineaPedido['idArticulo']);
+            $precioUnitario= $articulo->precio;
+            $importe= $lineaPedido['cantidad'] * $precioUnitario;
+
+
             DB::table('linea_pedido')->insert([
-                'fecha'=> $lineaPedido['fecha'],
-                'importe'=> $lineaPedido['importe'],
+                'cantidad'=> $lineaPedido['cantidad'],
+                'precio_unitario'=> $precioUnitario,
+                'importe'=> $importe,
                 'idPedido'=> $lineaPedido['idPedido'],
                 'idArticulo'=> $lineaPedido['idArticulo'],
             ]);

@@ -19,10 +19,10 @@ class Articulo extends Model
     }
 
     public function lineasPedido(){
-        return $this->hasMany(LineaPedido::class, 'idArticulo');
+        return $this->hasMany(LineaPedido::class);
     }
 
     public function lineasVenta(){
-        return $this->hasMany(LineaVenta::class, 'idArticulo');
+        return $this->hasMany(LineaVenta::class);
     }
 }

@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('linea_venta', function (Blueprint $table) {
             $table->increments('id')->primary();
-            $table->date('fecha');
+           /*  $table->date('fecha'); */
+            $table->integer('cantidad');
+            $table->decimal('precio_unitario', 8, 2);
             $table->decimal('importe', 8, 2);
             $table->unsignedInteger('idVenta')->nullable();
             $table->unsignedInteger('idArticulo')->nullable();

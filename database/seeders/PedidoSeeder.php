@@ -18,7 +18,7 @@ class PedidoSeeder extends Seeder
             [
                 'fecha' =>'2025-04-27',
                 'estado' => 'pendiente',
-                'telefono' => '600000001',
+                'metodoPago' => 'transferencia',
                 'idAuxiliar' => 1,
                 'idProveedor' => 1,
                 'idOptica' => 1,
@@ -26,7 +26,7 @@ class PedidoSeeder extends Seeder
             [
                 'fecha' =>'2025-04-29',
                 'estado' => 'recibido',
-                'telefono' => '600000002',
+                'metodoPago' => 'efectivo',
                 'idAuxiliar' => 2,
                 'idProveedor' => 1,
                 'idOptica' => 2,
@@ -34,7 +34,7 @@ class PedidoSeeder extends Seeder
             [
                 'fecha' =>'2025-05-06',
                 'estado' => 'cancelado',
-                'telefono' => '600000003',
+                'metodoPago' => 'tarjeta',
                 'idAuxiliar' => 1,
                 'idProveedor' => 2,
                 'idOptica' => 1,
@@ -42,7 +42,7 @@ class PedidoSeeder extends Seeder
             [
                 'fecha' =>'2025-05-09',
                 'estado' => 'pendiente',
-                'telefono' => '600000004',
+                'metodoPago' => 'efectivo',
                 'idAuxiliar' => 2,
                 'idProveedor' => 2,
                 'idOptica' => 2,
@@ -50,7 +50,7 @@ class PedidoSeeder extends Seeder
             [
                 'fecha' => '2025-05-16' ,
                 'estado' => 'recibido',
-                'telefono' => '600000005',
+                'metodoPago' => 'transferencia',
                 'idAuxiliar' => 1,
                 'idProveedor' => 1,
                 'idOptica' => 1,
@@ -61,7 +61,7 @@ class PedidoSeeder extends Seeder
             DB::table('pedidos')->insert([
                 'fecha'=> $pedido['fecha'],
                 'estado'=> $pedido['estado'],
-                'telefono'=> $pedido['telefono'],
+                'metodoPago' => $pedido['metodoPago'],
                 'idAuxiliar'=> $pedido['idAuxiliar'],
                 'idProveedor'=> $pedido['idProveedor'],
                 'idOptica'=> $pedido['idOptica'],

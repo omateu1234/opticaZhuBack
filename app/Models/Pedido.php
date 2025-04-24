@@ -24,11 +24,11 @@ class Pedido extends Model
     }
 
     public function facturaPedido(){
-        return $this->hasOne(FacturaPedido::class, 'idPedido');
+        return $this->hasOne(FacturaPedido::class);
     }
 
     public function lineasPedido(){
-        return $this->hasMany(LineaPedido::class, 'idPedido');
+        return $this->hasMany(LineaPedido::class);
     }
 
 }

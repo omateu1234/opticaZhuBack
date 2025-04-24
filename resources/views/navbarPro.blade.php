@@ -2,7 +2,7 @@
     <div class="logo"><img src="./assets/img/mininaranjiverdeTrayecto.svg" class="logo"></div>
     <div class="containerUser"><img src="./assets/img/user.svg" class="userLogo">Usuario</div>
     <ul class="sidebarUl">
-        
+
         <li class="nav-item sidebarLi">
             <div class="optionText">
                 <a class="sidebar-optionA" href="{{url('propietario/citas')}}">Citas</a>
@@ -44,6 +44,18 @@
                     <li><a data-bs-toggle="modal" data-bs-target="#buscarEmpModal">Buscar Empleado</a></li>
                     <li><a data-bs-toggle="modal" data-bs-target="#crearEmpModal">Crear Empleado</a></li>
                     <li><a>Ver todos</a></li>
+                </div>
+            </ul>
+        </li>
+        <li class="nav-item sidebarLi">
+            <div class="optionText">
+                <a class="dropdown-toggle sidebar-optionA" data-bs-toggle="collapse" href="#proveedorSubList" role="button" aria-expanded="false" aria-controls="proveedorSubList">Proveedores</a>
+            </div>
+            <ul class="collapse list-unstyled" id="proveedorSubList">
+                <div class="submenu">
+                    <li><a data-bs-toggle="modal" data-bs-target="#buscarProModal">Buscar Proveedor</a></li>
+                    <li><a data-bs-toggle="modal" data-bs-target="#crearProModal">Crear Proveedor</a></li>
+                    <li><a href="{{url('propietario/proveedores')}}">Ver todos</a></li>
                 </div>
             </ul>
         </li>
@@ -175,10 +187,7 @@
                     </div>
                 </form>
             </div>
-            <div class="modal-footer border-0">
-                <!-- <button type="button" class="botonFooterModal mx-3 mb-2" data-bs-dismiss="modal">Buscar</button> -->
-                <!--         <button type="button" class="btn btn-primary">Save changes</button>-->
-            </div>
+
         </div>
     </div>
 </div>
@@ -284,8 +293,94 @@
     </div>
 </div>
 
+<!-- modal buscar empleados -->
+<div class="modal fade" id="buscarProModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <div class="w-100 row mx-1 border-bottom pt-2 pb-3">
+                    <div class="col-auto d-flex align-items-center">
+                        <h5 class="modal-title tituloModal" id="exampleModalLabel">Busqueda de Proveedores</h5>
+                    </div>
+                    <div class="col-auto ms-auto d-flex align-items-center"><button type="button" class="ms-auto btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                </div>
+            </div>
+            <div class="modal-body mt-2 mb-3">
+                <form class="form-cli row" method="GET" action="">
+                <div class="col px-2">
+                        <div class="row my-2">
+                            <div class="col">
+                                <div class="input-group px-3">
+                                    <input class="form-control" type="text" placeholder="Búsqueda por NIF" name="nif">
+                                    <button class="btn btn-primary botonInputModal" type="submit" ><i class="fa-solid fa-angle-right fa-2x"></i></button>
+                                </div>
 
-<div id="login" style="display: none;">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal crear proveedor -->
+<div class="modal modal-lg fade" id="crearProModal" tabindex="-1" aria-labelledby="crearProModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <div class="w-100 row mx-1 border-bottom pt-2 pb-3">
+                    <div class="col-auto d-flex align-items-center">
+                        <h5 class="modal-title tituloModal" id="crearProModalLabel">Creación de Proveedor</h5>
+                    </div>
+                    <div class="col-auto ms-auto d-flex align-items-center"><button type="button" class="ms-auto btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                </div>
+            </div>
+            <div class="modal-body mt-2 mb-3">
+                <form id="form-cli " method="POST" action="">
+                    <div class="col px-2">
+                        @csrf
+                        <div class="row my-2">
+                            <div class="col">
+                                <label class="col-form-label" for="nombre">Nombre</label>
+                                <input class="form-control" type="text" name="nombre" id="nombre" maxlength="20">
+                            </div>
+                            <div class="col">
+                                <label class="col-form-label" for="direccion">Dirección</label>
+                                <input class="form-control" type="text" name="direccion" id="direccion" maxlength="40">
+                            </div>
+
+                        </div>
+                        <div class="row my-2">
+                            <div class="col">
+                                <label class="col-form-label" for="cp">Cód.Postal</label>
+                                <input class="form-control" type="text" name="codPostal"  id="cp">
+                            </div>
+                            <div class="col">
+                                <label class="col-form-label" for="telf">Num. Telf</label>
+                                <input class="form-control" type="text" name="telefono" id="telf" maxlength="9">
+                            </div>
+                            <div class="col">
+                                <label class="col-form-label" for="correo">Correo</label>
+                                <input class="form-control" type="email" name="correo" id="correo">
+                            </div>
+                        </div>
+                    </div>
+
+            </div>
+            <div class="modal-footer border-0">
+                <button type="submit" class="botonFooterModal mx-3 mb-2">Crear</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- <div id="login" style="display: none;">
     <div class="card">
         <form class="formStart">
             <div class="row">
@@ -308,7 +403,7 @@
             <button routerLink="/citas">Iniciar Sesion</button>
         </form>
     </div>
-</div>
+</div> -->
 
 
 

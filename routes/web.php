@@ -7,6 +7,7 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\FichaController;
 use App\Http\Controllers\CitaController;
+use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\API\UserController;
 use App\Models\User;
 
@@ -61,6 +62,8 @@ Route::get('propietario/configEmpleado', function () {
 
 Route::view('propietario/perfilEmp', 'perfilEmp')->name('perfilEmp');
 
+Route::view('propietario/proveedores', 'proveedores')->name('proveedores');
+
 
 //Metodos Mostrar
 Route::get('mostraropticas', [AdminController::class, 'mostrarOpticas'])->name('mostrarOpticas');
@@ -70,6 +73,7 @@ Route::get('/propietario/opticasC', [OpticaController::class, 'mostrarCard'])->n
 Route::get('/propietario/opticaSelec/{id}', [OpticaController::class, 'opticaSelect'])->name('opticaSelec');
 Route::get('propietario/opticaSelec/citas', [CitaController::class, 'citaOptica'])->name('citasS');
 Route::get('/propietario/opticasS', [OpticaController::class, 'indexSelect'])->name('indexSelect');
+Route::get('/propietario/proveedores', [ProveedorController::class, 'getAll'])->name('proveedores');
 //Route::get('/propietario/empleadosOp/{id}', [OpticaController::class, 'empleadosOptica'])->name('empleadosOp');
 
 //Route::get('opticas', [OpticaController::class, 'index']);

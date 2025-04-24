@@ -20,8 +20,8 @@ class VentaSeeder extends Seeder
             [
                 'fecha' => Carbon::now()->subDays(10),
                 'importe' => 150.00,
-                'idOptica' => 1,
                 'metodoPago' => 'transferencia',
+                'idOptica' => 1,
                 'idCliente' => 1,
             ],
             [

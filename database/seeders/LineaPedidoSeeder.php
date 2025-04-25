@@ -49,7 +49,7 @@ class LineaPedidoSeeder extends Seeder
         foreach ($lineaPedidos as $lineaPedido){
 
             $articulo= Articulo::find($lineaPedido['idArticulo']);
-            $precioUnitario= $articulo->precio;
+            $precioUnitario= $articulo->precioProveedor;
             $importe= $lineaPedido['cantidad'] * $precioUnitario;
 
 

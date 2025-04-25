@@ -4,7 +4,7 @@
 <div class="container-flex containerPagina">
     <div class="row w-100 mb-4">
         <div class="col-auto me-auto">
-            <h1 class="tituloPagina">Proveedores</h1>
+            <h1 class="tituloPagina">Pedidos</h1>
         </div>
 
         <!-- <div class="col d-flex justify-content-end">
@@ -31,28 +31,22 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>NIF</th>
-                <th>Nombre</th>
-                <th>Dirección</th>
-                <th>Cod Postal</th>
-                <th>Teléfono</th>
-                <th>Correo</th>
+                <th>Fecha</th>
+                <th>Estado</th>
+                <th>Metodo Pago</th>>
             </tr>
         </thead>
         <tbody>
-            @forelse($proveedores as $proveedor)
-            <tr class="table-row" onclick="window.location='{{route('perfilProv', $proveedor->id )}}'">
-                <td>{{$proveedor->id}}</td>
-                <td>{{$proveedor->nif}}</td>
-                <td>{{$proveedor->nombre}}</td>
-                <td>{{$proveedor->direccion}}</td>
-                <td>{{$proveedor->codPostal}}</td>
-                <td>{{$proveedor->telefono}}</td>
-                <td>{{$proveedor->correo}}</td>
+            @forelse($pedidos as $pedido)
+            <tr class="table-row" onclick="window.location='{{route('perfilProv', $pedido->id )}}'">
+                <td>{{$pedido->id}}</td>
+                <td>{{$pedido->fecha}}</td>
+                <td>{{$pedido->estado}}</td>
+                <td>{{$pedido->metodoPago}}</td>
             </tr>
             @empty
             <tr>
-                <td colspan="6">No hay Proveedores para esta óptica.</td>
+                <td colspan="6">No hay pedidos para esta óptica.</td>
             </tr>
             @endforelse
         </tbody>

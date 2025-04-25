@@ -8,7 +8,7 @@ class Proveedor extends Model
 {
     //
     protected $table = 'proveedores';
-    protected $fillable = [ 'nombre', 'direccion','telefono','correo','nif'];
+    protected $fillable = [ 'nombre', 'direccion','codPostal','telefono','correo','nif'];
     public $timestamps = false;
 
     public function pedidos(){
@@ -16,6 +16,6 @@ class Proveedor extends Model
     }
 
     public function articulos(){
-        return $this->hasMany(Articulo::class);
+        return $this->hasMany(Articulo::class, 'idProveedor');
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Articulo extends Model
 {
     //
-    protected $fillable = ['nombre', 'descripcion', 'precio', 'stock'];
+    protected $fillable = ['nombre', 'descripcion', 'precioProveedor', 'precioCliente', 'stock'];
     public $timestamps = false;
 
     public function proveedor(){

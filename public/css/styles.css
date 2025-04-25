@@ -128,3 +128,124 @@
 .swal2-popup {
     border: 1px solid var(--puerto-rico-700);
 }
+
+/**
+ * Estilos para Tabla
+ */
+/* Estilo para la tabla en general */
+.table-container {
+    background-color: #9FF0DA;
+    border: 1px solid #66d1bc;
+    border-radius: 0.3em;
+    color: black;
+    transition: all 0.3s ease;
+    table-layout: auto;
+    width: 100%;
+}
+
+.table-container th {
+    background-color: #166F61;
+    color: white;
+}
+
+.table-container th:first-child {
+    border-radius: 4px 0 0 0;
+}
+
+.table-container th:last-child {
+    border-radius: 0 4px 0 0;
+}
+
+.table-container tbody tr:nth-child(odd) {
+    background-color: #dff8f1;
+}
+
+.table-container tbody tr:last-child td:first-child {
+    border-radius: 0 0 0 4px;
+}
+
+.table-container tbody tr:last-child td:last-child {
+    border-radius: 0 0 4px 0;
+}
+
+.table-container tbody tr {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.table-container tbody tr:hover td {
+    background-color: #d8fff41e;
+    color: black;
+}
+
+
+.table-container tbody td {
+    border: transparent;
+}
+
+.table-container tbody tr:nth-child(odd) {
+    background-color: #9FF0DA;
+}
+
+.table-container tbody tr:nth-child(even) {
+    background-color:#D0F7ED;
+}
+
+.table-container tbody tr:hover td {
+    background-color: inherit; /* Mantén el color original */
+    color: inherit; /* Mantén el color original */
+}
+
+.pagination-button.current {
+    background-image: linear-gradient(rgba(38, 150, 133, 0.05), rgba(38, 150, 133, 0.1));
+    border: 1px solid #66d1bc;
+    background-color: #ffffff;
+    color: black;
+    transition: all 0.3s ease;
+}
+
+.pagination-button.current:active {
+    box-shadow: inset 0 0 5px #176E63;
+}
+
+
+.tabla-articulos {
+    width: 63%;
+    border-collapse: separate; /* Importante para que el border-radius funcione */
+    border-spacing: 5px; /* Elimina espacios entre celdas */
+    border: none; /* Borde general de la tabla */
+    border-radius: 12px; /* Redondear toda la tabla */
+    overflow: hidden; /* Evita que las celdas sobresalgan de la tabla */
+    table-layout: fixed;
+    word-wrap: break-word;
+    border-collapse: collapse;
+
+}
+
+/* Encabezados */
+.tabla-articulos th {
+    background-color: #FFBD62;
+    text-align: center;
+    padding: 12px;
+    border: 1px solid #FFBD62;
+}
+
+/* Celdas */
+.tabla-articulos td {
+    background-color: #FFDA9F;
+    text-align: center;
+    padding: 10px;
+    vertical-align: middle;
+    border: 1px solid #dee2e6;
+}
+
+.tabla-articulos tbody tr:nth-child(even) td {
+    background-color: white; /* Color para filas pares */
+    color: black;
+}
+
+/* Alternar colores */
+.tabla-articulos tbody tr:nth-child(odd) td {
+    background-color: #FFDA9F;
+    color: black;
+}

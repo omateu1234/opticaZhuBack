@@ -15,7 +15,7 @@ return new class extends Migration
             $table->increments('id')->primary();
             $table->string('nombre', 20);
             $table->string('direccion', 40);
-            $table->integer('codPostal');
+            $table->integer('codPostal')->nullable();
             $table->string('telefono', 15);
             $table->string('correo', 25);
             $table->string('nif', 9);

@@ -56,6 +56,19 @@
                     <li><a data-bs-toggle="modal" data-bs-target="#buscarProModal">Buscar Proveedor</a></li>
                     <li><a data-bs-toggle="modal" data-bs-target="#crearProModal">Crear Proveedor</a></li>
                     <li><a href="{{url('propietario/proveedores')}}">Ver todos</a></li>
+                    <li><a data-bs-toggle="modal" data-bs-target="#buscarProPedidoModal">Realizar Pedido</a></li>
+                </div>
+            </ul>
+        </li>
+        <li class="nav-item sidebarLi">
+            <div class="optionText">
+                <a class="dropdown-toggle sidebar-optionA" data-bs-toggle="collapse" href="#pedidosSubList" role="button" aria-expanded="false" aria-controls="proveedorSubList">Pedidos</a>
+            </div>
+            <ul class="collapse list-unstyled" id="pedidosSubList">
+                <div class="submenu">
+                    <li><a data-bs-toggle="modal" data-bs-target="#">Buscar Pedido</a></li>
+                    <li><a data-bs-toggle="modal" data-bs-target="#buscarProPedidoModal">Realizar Pedido</a></li>
+                    <li><a href="{{url('propietario/pedidos')}}">Ver todos</a></li>
                 </div>
             </ul>
         </li>
@@ -293,7 +306,7 @@
     </div>
 </div>
 
-<!-- modal buscar empleados -->
+<!-- modal buscar Proveedores -->
 <div class="modal fade" id="buscarProModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -306,15 +319,19 @@
                 </div>
             </div>
             <div class="modal-body mt-2 mb-3">
-                <form class="form-cli row" method="GET" action="">
+                <form class="form-cli row" method="GET" action="{{url('propietario/buscarProv')}}">
                 <div class="col px-2">
                         <div class="row my-2">
                             <div class="col">
+                                <h5>Opciones de Busqueda:</h5>
                                 <div class="input-group px-3">
                                     <input class="form-control" type="text" placeholder="Búsqueda por NIF" name="nif">
                                     <button class="btn btn-primary botonInputModal" type="submit" ><i class="fa-solid fa-angle-right fa-2x"></i></button>
                                 </div>
-
+                                <div class="input-group px-3 mt-2">
+                                    <input class="form-control" type="text" placeholder="Búsqueda por Nombre de Proveedor" name="nombre">
+                                    <button class="btn btn-primary botonInputModal" type="submit" ><i class="fa-solid fa-angle-right fa-2x"></i></button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -337,7 +354,7 @@
                 </div>
             </div>
             <div class="modal-body mt-2 mb-3">
-                <form id="form-cli " method="POST" action="">
+                <form id="form-cli " method="POST" action="{{url('propietario/insertarProveedor')}}">
                     <div class="col px-2">
                         @csrf
                         <div class="row my-2">
@@ -349,13 +366,12 @@
                                 <label class="col-form-label" for="direccion">Dirección</label>
                                 <input class="form-control" type="text" name="direccion" id="direccion" maxlength="40">
                             </div>
-
                         </div>
+
                         <div class="row my-2">
                             <div class="col">
                                 <label class="col-form-label" for="cp">Cód.Postal</label>
-                                <input class="form-control" type="text" name="codPostal"  id="cp">
-                            </div>
+                                <input class="form-control" type="text" name="codPostal" id="cp">                            </div>
                             <div class="col">
                                 <label class="col-form-label" for="telf">Num. Telf</label>
                                 <input class="form-control" type="text" name="telefono" id="telf" maxlength="9">
@@ -365,6 +381,14 @@
                                 <input class="form-control" type="email" name="correo" id="correo">
                             </div>
                         </div>
+
+                        <div class="row my-2">
+                            <div class='col'>
+                                <label class="col-form-label" for="nif">NIF</label>
+                                <input class="form-control w-50" type="text" name="nif" id="nif" maxlength="9">
+                            </div>
+                        </div>
+
                     </div>
 
             </div>
@@ -372,6 +396,65 @@
                 <button type="submit" class="botonFooterModal mx-3 mb-2">Crear</button>
             </div>
             </form>
+        </div>
+    </div>
+</div>
+
+<!-- modal para pedidos -->
+<div class="modal fade" id="buscarProPedidoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <div class="w-100 row mx-1 border-bottom pt-2 pb-3">
+                    <div class="col-auto d-flex align-items-center">
+                        <h5 class="modal-title tituloModal" id="exampleModalLabel">Realiza el Pedido</h5>
+                    </div>
+                    <div class="col-auto ms-auto d-flex align-items-center"><button type="button" class="ms-auto btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                </div>
+            </div>
+            <div class="modal-body mt-2 mb-3">
+                <form class="form-cli row" method="POST" action="{{url('propietario/insertarPedido')}}">
+                <div class="col px-2">
+                    @csrf
+                        <div class="row my-2">
+                            <div class="col">
+                                <h5>Proveedores:</h5>
+                                <div class='row my-2'>
+                                    @if(isset($proveedores) && count($proveedores) > 0)
+                                        {{-- <label>Elige la Óptica:</label> --}}
+                                            <select id="optica" name="idProveedor" class="form-select w-auto">
+                                        @foreach($proveedores as $proveedor)
+                                        <option value="{{ $proveedor->id }}">{{ $proveedor->nombre }}</option>
+                                        @endforeach
+                                            </select>
+                                    @else
+                                        <p>No hay proveedores disponibles.</p>
+                                    @endif
+                                </div>
+                                <h5>Metodo de Pago:</h5>
+                                <div class="row my-2 w-50">
+                                    <select name="metodoPago" id="metodoPago">
+                                        <option value="transferencia">Transferencia</option>
+                                        <option value="tarjeta">Tarjeta</option>
+                                        <option value="efectivo">Efectivo</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row my-2">
+                            <div class="col px-2">
+                                <h5>Fecha:</h5>
+                                <div class="input-group px-3">
+                                    <input class="form-control" type="date"  name="fecha">
+                                    <button class="btn btn-primary botonInputModal" type="submit" ><i class="fa-solid fa-angle-right fa-2x"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

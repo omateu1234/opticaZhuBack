@@ -19,7 +19,7 @@ class ArticuloSeeder extends Seeder
             [
                 'nombre' => 'Lentes Sol',
                 'descripcion' => 'Lentes de sol polarizados.',
-                'precio' => 49.99,
+                'precioProveedor' => 49.99,
                 'stock' => 10,
                 'idProveedor' => 1,
                 'idOptica' => 1,
@@ -27,7 +27,8 @@ class ArticuloSeeder extends Seeder
             [
                 'nombre' => 'Gafas Lectura',
                 'descripcion' => 'Gafas para lectura de cerca.',
-                'precio' => 29.90,
+                'precioProveedor' => 29.90,
+
                 'stock' => 15,
                 'idProveedor' => 2,
                 'idOptica' => 1,
@@ -35,7 +36,7 @@ class ArticuloSeeder extends Seeder
             [
                 'nombre' => 'Estuche',
                 'descripcion' => 'Estuche rígido para gafas.',
-                'precio' => 9.99,
+                'precioProveedor' => 9.99,
                 'stock' => 25,
                 'idProveedor' => 1,
                 'idOptica' => 2,
@@ -43,7 +44,7 @@ class ArticuloSeeder extends Seeder
             [
                 'nombre' => 'Limpia Cristales',
                 'descripcion' => 'Spray para limpiar gafas.',
-                'precio' => 4.50,
+                'precioProveedor' => 4.50,
                 'stock' => 50,
                 'idProveedor' => 2,
                 'idOptica' => 2,
@@ -51,7 +52,7 @@ class ArticuloSeeder extends Seeder
             [
                 'nombre' => 'Gafas Premium',
                 'descripcion' => 'Montura metálica con cristales.',
-                'precio' => 120.00,
+                'precioProveedor' => 120.00,
                 'stock' => 5,
                 'idProveedor' => 1,
                 'idOptica' => 1,
@@ -62,7 +63,8 @@ class ArticuloSeeder extends Seeder
             DB::table('articulos')->insert([
                 'nombre'=> $articulo['nombre'],
                 'descripcion'=> $articulo['descripcion'],
-                'precio'=> $articulo['precio'],
+                'precioProveedor'=> $articulo['precioProveedor'],
+                'precioCliente'=> $articulo['precioProveedor'] * 1.2, // Precio cliente es un 20% más que el precio proveedo
                 'stock'=> $articulo['stock'],
                 'idProveedor'=> $articulo['idProveedor'],
                 'idOptica'=> $articulo['idOptica'],

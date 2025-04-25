@@ -48,7 +48,7 @@ class LineaVentaSeeder extends Seeder
         foreach ($lineaVentas as $lineaVenta){
 
             $articulo= Articulo::find($lineaVenta['idArticulo']);
-            $precioUnitario= $articulo->precio;
+            $precioUnitario= $articulo->precioCliente;
             $importe= $lineaVenta['cantidad'] * $precioUnitario;
 
             DB::table('linea_venta')->insert([

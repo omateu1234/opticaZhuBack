@@ -15,7 +15,8 @@ return new class extends Migration
             $table->increments('id')->primary();
             $table->string('nombre', 20);
             $table->string('descripcion', 50);
-            $table->decimal('precio', 8, 2);
+            $table->decimal('precioProveedor', 8, 2);
+            $table->decimal('precioCliente', 8, 2);
             $table->integer('stock')->default(0);
             $table->unsignedInteger('idProveedor')->nullable();
             $table->unsignedInteger('idOptica')->nullable();

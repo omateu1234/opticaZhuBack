@@ -8,6 +8,7 @@ use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\FichaController;
 use App\Http\Controllers\CitaController;
 use App\Http\Controllers\ProveedorController;
+use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\API\UserController;
 use App\Models\User;
 
@@ -61,8 +62,11 @@ Route::get('propietario/configEmpleado', function () {
 })->name('configEmpleado');
 
 Route::view('propietario/perfilEmp', 'perfilEmp')->name('perfilEmp');
-
 Route::view('propietario/proveedores', 'proveedores')->name('proveedores');
+Route::view('propietario/perfilProv', 'perfilProv')->name('perfilProv');
+Route::view('propietario/pedido', 'pedido')->name('pedido');
+Route::view('propietario/pedidos', 'pedidos')->name('pedidos');
+Route::view('propietario/resumenPedido', 'resumenPedido')->name('resumenPedido');
 
 
 //Metodos Mostrar
@@ -74,9 +78,10 @@ Route::get('/propietario/opticaSelec/{id}', [OpticaController::class, 'opticaSel
 Route::get('propietario/opticaSelec/citas', [CitaController::class, 'citaOptica'])->name('citasS');
 Route::get('/propietario/opticasS', [OpticaController::class, 'indexSelect'])->name('indexSelect');
 Route::get('/propietario/proveedores', [ProveedorController::class, 'getAll'])->name('proveedores');
-//Route::get('/propietario/empleadosOp/{id}', [OpticaController::class, 'empleadosOptica'])->name('empleadosOp');
+Route::get('/propietario/perfilprov/{id}', [ProveedorController::class, 'getById'])->name('perfilProv');
+Route::get('/propietario/pedidos', [PedidoController::class ,'getAll'])->name('pedidos');
+/* Route::get('/propietario/perfilprov/{id}/articulos', [ProveedorController::class, 'getArticulos'])->name('perfilProvArticulos');*/
 
-//Route::get('opticas', [OpticaController::class, 'index']);
 
 Route::get('', [OpticaController::class, 'guardar']);
 
@@ -86,12 +91,16 @@ Route::post('propietario/opticaSesion', [OpticaController::class, 'guardarSesion
 Route::post('propietario/insertarCliente', [ClienteController::class, 'guardar'])->name('insertarCliente');
 Route::post('propietario/insertarEmpleado', [UserController::class, 'register'])->name('insertarEmpleado');
 Route::post('propietario/userSesion', [UserController::class, 'guardarSesion'])->name('insertarEmpleado');
+Route::post('propietario/insertarProveedor', [ProveedorController::class, 'guardar'])->name('insertarProveedor');
+Route::post('propietario/insertarPedido', [PedidoController::class,  'guardar'])->name('insertarPedido');
 
 
 //Metodos Buscar
 Route::get('propietario/buscarCli', [ClienteController::class, 'buscarCli'])->name('buscarCli');
 Route::get('propietario/buscarEmp', [UserController::class, 'buscarEmpleadoLaravel'])->name('buscarEmpleado');
 Route::get('propietario/buscarCli', [ClienteController::class,'buscarCli'])->name('buscarCli');
+Route::get('propietario/buscarProv', [ProveedorController::class, 'getByNifOrName'])->name('buscarProv');
+Route::get('propietario/buscarProvPedido', [ProveedorController::class, 'getByNifOrNamePedido'])->name('buscarProvPedido');
 
 //Metodos Editar
 Route::patch('propietario/desactivar/{id}', [UserController::class, 'desactivarEmpleado'])->name('desactivar');

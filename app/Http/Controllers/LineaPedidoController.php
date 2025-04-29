@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\LineaPedido;
+use App\Models\Articulo;
+
 
 
 class LineaPedidoController extends Controller
@@ -26,6 +28,11 @@ class LineaPedidoController extends Controller
                 'idPedido' => $articulo['idPedido'],
                 'idArticulo' => $articulo['idArticulo'],
             ]);
+            $articuloActualizado=Articulo::find($articulo['idArticulo']);
+            if($articuloActualizado){
+                $articuloActualizado->stock += $articulo['cantidad'];
+                $articuloActualizado->save();
+            }
         }
         return redirect()->route('pedidos')->with('success', 'Linea Pedido guardado correctamente.');
     }

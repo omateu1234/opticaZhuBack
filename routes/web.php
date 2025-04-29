@@ -100,6 +100,7 @@ Route::post('propietario/userSesion', [UserController::class, 'guardarSesion'])-
 Route::post('propietario/insertarProveedor', [ProveedorController::class, 'guardar'])->name('insertarProveedor');
 Route::post('propietario/insertarPedido', [PedidoController::class,  'guardar'])->name('insertarPedido');
 Route::post('propietario/insertarLineaPedido', [LineaPedidoController::class, 'guardar'])->name('insertarLineaPedido');
+Route::post('propietario/pagarFactura' , [FacturaPedidoController::class,  'pagarFactura'])->name('pagarFactura');
 
 
 //Metodos Buscar

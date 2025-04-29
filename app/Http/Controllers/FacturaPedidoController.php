@@ -30,6 +30,7 @@ class FacturaPedidoController extends Controller
 
 
         $datosFactura=[
+            'idPedido'=> $pedido->id,
             'fecha'=> now(),
             'estadoPago'=> 'pendiente',
             'proveedor'=> $pedido->proveedor->nombre,
@@ -54,5 +55,20 @@ class FacturaPedidoController extends Controller
         return view('factura', compact('datosFactura'));
     }
 
+    public function pagarFactura(Request $request){
+        $datos= $request->validate([
+            'fecha' => 'required|date',
+            'estadoPago' => 'required|string|max:255',
+            'idPedido' => 'required|integer',
+        ]);
+        FacturaPedido::create($datos);
 
+        $pedidoActualizado=Pedido::find($datos['idPedido']);
+        if($pedidoActualizado){
+            $pedidoActualizado->estado ='recibido';
+            $pedidoActualizado->save();
+        }
+
+        return redirect()->route('pedidos')->with('success', 'Factura guardada correctamente.');
+    }
 }

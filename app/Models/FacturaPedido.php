@@ -8,7 +8,7 @@ class FacturaPedido extends Model
 {
     //
     protected $table = 'factura_pedido';
-    protected $fillable = ['fecha', 'estadoPago', 'importe'];
+    protected $fillable = ['fecha', 'estadoPago', 'importe', 'idPedido'];
     public $timestamps = false;
 
     public function pedido()

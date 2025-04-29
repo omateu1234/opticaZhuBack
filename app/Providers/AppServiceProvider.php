@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Optica;
 use App\Models\Proveedor;
+use App\Models\Pedido;
 use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,6 +25,8 @@ class AppServiceProvider extends ServiceProvider
     {
         View::share('opticas', Optica::all());
         View::share('proveedores', Proveedor::all());
+        View::share('pedidos', Pedido::all());
+
 
     }
 }

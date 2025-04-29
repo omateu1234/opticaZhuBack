@@ -14,31 +14,19 @@
         <!-- {{-- <div class="col-auto ms-auto d-flex ">
             <button class="botonNuevaCita" data-bs-toggle="modal" data-bs-target="#buscarCliModal2">Nueva Cita</button>
         </div> --}} -->
-
-
     </div>
-   {{--  <form action="">
-        <div class="row">
-            <div class="col-auto col-2">
-                <select class="form-select form-select-sm" name="Cambiar vista" id="">
-                    <option value="" selected disabled>Cambiar vista</option>
-                </select>
-            </div>
-        </div>
-    </form> --}}
-
     <table class="table-container table table-striped">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Fecha</th>
                 <th>Estado</th>
-                <th>Metodo Pago</th>>
+                <th>Metodo Pago</th>
             </tr>
         </thead>
         <tbody>
             @forelse($pedidos as $pedido)
-            <tr class="table-row" onclick="window.location='{{route('perfilProv', $pedido->id )}}'">
+            <tr class="table-row" onclick="window.location='{{route('pedido', $pedido->id )}}'">
                 <td>{{$pedido->id}}</td>
                 <td>{{$pedido->fecha}}</td>
                 <td>{{$pedido->estado}}</td>
@@ -51,6 +39,8 @@
             @endforelse
         </tbody>
     </table>
+
+
 </div>
 
 @endsection

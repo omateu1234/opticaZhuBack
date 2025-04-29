@@ -9,6 +9,10 @@ use App\Http\Controllers\FichaController;
 use App\Http\Controllers\CitaController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\LineaPedidoController;
+use App\Http\Controllers\FacturaPedidoController;
+
+
 use App\Http\Controllers\API\UserController;
 use App\Models\User;
 
@@ -67,7 +71,7 @@ Route::view('propietario/perfilProv', 'perfilProv')->name('perfilProv');
 Route::view('propietario/pedido', 'pedido')->name('pedido');
 Route::view('propietario/pedidos', 'pedidos')->name('pedidos');
 Route::view('propietario/resumenPedido', 'resumenPedido')->name('resumenPedido');
-
+Route::view('propietario/factura', 'factura')->name('factura');
 
 //Metodos Mostrar
 Route::get('mostraropticas', [AdminController::class, 'mostrarOpticas'])->name('mostrarOpticas');
@@ -80,6 +84,8 @@ Route::get('/propietario/opticasS', [OpticaController::class, 'indexSelect'])->n
 Route::get('/propietario/proveedores', [ProveedorController::class, 'getAll'])->name('proveedores');
 Route::get('/propietario/perfilprov/{id}', [ProveedorController::class, 'getById'])->name('perfilProv');
 Route::get('/propietario/pedidos', [PedidoController::class ,'getAll'])->name('pedidos');
+Route::get('/propietario/pedido/{id}', [PedidoController::class,  'getProveedor'])->name('pedido');
+Route::get('propietario/factura', [FacturaPedidoController::class, 'generarFactura'])->name('generarFactura');
 /* Route::get('/propietario/perfilprov/{id}/articulos', [ProveedorController::class, 'getArticulos'])->name('perfilProvArticulos');*/
 
 
@@ -93,6 +99,7 @@ Route::post('propietario/insertarEmpleado', [UserController::class, 'register'])
 Route::post('propietario/userSesion', [UserController::class, 'guardarSesion'])->name('insertarEmpleado');
 Route::post('propietario/insertarProveedor', [ProveedorController::class, 'guardar'])->name('insertarProveedor');
 Route::post('propietario/insertarPedido', [PedidoController::class,  'guardar'])->name('insertarPedido');
+Route::post('propietario/insertarLineaPedido', [LineaPedidoController::class, 'guardar'])->name('insertarLineaPedido');
 
 
 //Metodos Buscar

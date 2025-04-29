@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class LineaPedido extends Model
 {
     //
-    protected $fillable = ['fecha', 'importe'];
+    protected $table = 'linea_pedido';
+    protected $fillable = ['cantidad','precio_unitario' ,'importe','idPedido', 'idArticulo'];
     public $timestamps = false;
 
     public function pedido(){
@@ -17,6 +18,6 @@ class LineaPedido extends Model
     public function articulo(){
         return $this->belongsTo(Articulo::class, 'idArticulo');
     }
-    
+
 
 }

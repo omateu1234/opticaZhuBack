@@ -28,7 +28,7 @@ class Pedido extends Model
     }
 
     public function lineasPedido(){
-        return $this->hasMany(LineaPedido::class);
+        return $this->hasMany(LineaPedido::class, 'idPedido');
     }
 
 }

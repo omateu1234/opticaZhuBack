@@ -56,7 +56,6 @@
                     <li><a data-bs-toggle="modal" data-bs-target="#buscarProModal">Buscar Proveedor</a></li>
                     <li><a data-bs-toggle="modal" data-bs-target="#crearProModal">Crear Proveedor</a></li>
                     <li><a href="{{url('propietario/proveedores')}}">Ver todos</a></li>
-                    <li><a data-bs-toggle="modal" data-bs-target="#buscarProPedidoModal">Realizar Pedido</a></li>
                 </div>
             </ul>
         </li>
@@ -67,7 +66,8 @@
             <ul class="collapse list-unstyled" id="pedidosSubList">
                 <div class="submenu">
                     <li><a data-bs-toggle="modal" data-bs-target="#">Buscar Pedido</a></li>
-                    <li><a data-bs-toggle="modal" data-bs-target="#buscarProPedidoModal">Realizar Pedido</a></li>
+                    <li><a data-bs-toggle="modal" data-bs-target="#crearPedidoModal">Realizar Pedido</a></li>
+                    <li><a data-bs-toggle="modal" data-bs-target="#mostrarFacturaModal">Realizar Factura</a></li>
                     <li><a href="{{url('propietario/pedidos')}}">Ver todos</a></li>
                 </div>
             </ul>
@@ -371,7 +371,8 @@
                         <div class="row my-2">
                             <div class="col">
                                 <label class="col-form-label" for="cp">Cód.Postal</label>
-                                <input class="form-control" type="text" name="codPostal" id="cp">                            </div>
+                                <input class="form-control" type="text" name="codPostal" id="cp">
+                            </div>
                             <div class="col">
                                 <label class="col-form-label" for="telf">Num. Telf</label>
                                 <input class="form-control" type="text" name="telefono" id="telf" maxlength="9">
@@ -401,7 +402,7 @@
 </div>
 
 <!-- modal para pedidos -->
-<div class="modal fade" id="buscarProPedidoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="crearPedidoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header border-0">
@@ -422,7 +423,7 @@
                                 <div class='row my-2'>
                                     @if(isset($proveedores) && count($proveedores) > 0)
                                         {{-- <label>Elige la Óptica:</label> --}}
-                                            <select id="optica" name="idProveedor" class="form-select w-auto">
+                                        <select id="optica" name="idProveedor" class="form-select w-auto">
                                         @foreach($proveedores as $proveedor)
                                         <option value="{{ $proveedor->id }}">{{ $proveedor->nombre }}</option>
                                         @endforeach
@@ -450,6 +451,50 @@
                                     <input class="form-control" type="date"  name="fecha">
                                     <button class="btn btn-primary botonInputModal" type="submit" ><i class="fa-solid fa-angle-right fa-2x"></i></button>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal para facturas -->
+<div class="modal fade" id="mostrarFacturaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <div class="w-100 row mx-1 border-bottom pt-2 pb-3">
+                    <div class="col-auto d-flex align-items-center">
+                        <h5 class="modal-title tituloModal" id="exampleModalLabel">Realizar Factura</h5>
+                    </div>
+                    <div class="col-auto ms-auto d-flex align-items-center"><button type="button" class="ms-auto btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                </div>
+            </div>
+            <div class="modal-body mt-2 mb-3">
+                <form class="form-cli row" method="GET" action="{{url('/propietario/factura')}}">
+                <div class="col px-2">
+                        <div class="row my-2">
+                            <div class="col">
+                                <h5>Pedidos:</h5>
+                                <div class='row my-2'>
+                                    @if(isset($pedidos) && count($pedidos) > 0)
+                                        {{-- <label>Elige la Óptica:</label> --}}
+                                        <select id="optica" name="idPedido" class="form-select w-auto">
+                                        @foreach($pedidos as $pedido)
+                                        <option value="{{ $pedido->id }}">
+                                            Pedido #{{$pedido->id}} -Proveedor: {{ $pedido->proveedor->nombre }} -Fecha del Pedido: {{$pedido->fecha}}
+                                        </option>
+                                        @endforeach
+                                            </select>
+                                    @else
+                                        <p>No hay proveedores disponibles.</p>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="input-group px-3">
+                                <button class="btn btn-primary botonInputModal" type="submit" ><i class="fa-solid fa-angle-right fa-2x"></i></button>
                             </div>
                         </div>
                     </div>

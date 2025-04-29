@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Pedido;
+use App\Models\FacturaPedido;
 
 
 class PedidoController extends Controller
@@ -23,7 +24,7 @@ class PedidoController extends Controller
         ]);
         Pedido::create($datos);
 
-        return view('pedido', compact('proveedor', 'articulos'));
+        return redirect()->route('pedidos')->with('success', 'Pedido guardado correctamente.');
     }
 
     public function getById($id){
@@ -32,6 +33,16 @@ class PedidoController extends Controller
         $proveedor = Proveedor::with('articulos')->find($id);
 
 
-        return view('pedido', compact('proveedor', 'articulos'));
+        return view('pedido', compact('proveedor', 'articulos' ));
+    }
+
+    public function getProveedor($id){
+        $pedido = Pedido::find($id);
+
+        $proveedor= $pedido->proveedor;
+
+        $articulos = $proveedor->articulos;
+
+        return view('pedido', compact('proveedor', 'articulos', 'pedido' ));
     }
 }

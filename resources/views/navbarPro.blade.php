@@ -65,9 +65,8 @@
             </div>
             <ul class="collapse list-unstyled" id="pedidosSubList">
                 <div class="submenu">
-                    <li><a data-bs-toggle="modal" data-bs-target="#">Buscar Pedido</a></li>
+                    <li><a data-bs-toggle="modal" data-bs-target="#buscarPedidoProModal">Buscar Pedido</a></li>
                     <li><a data-bs-toggle="modal" data-bs-target="#crearPedidoModal">Realizar Pedido</a></li>
-                    <li><a data-bs-toggle="modal" data-bs-target="#mostrarFacturaModal">Realizar Factura</a></li>
                     <li><a href="{{url('propietario/pedidos')}}">Ver todos</a></li>
                 </div>
             </ul>
@@ -460,41 +459,32 @@
     </div>
 </div>
 
-<!-- modal para facturas -->
-<div class="modal fade" id="mostrarFacturaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- modal buscar Pedidos por Proveedor -->
+<div class="modal fade" id="buscarPedidoProModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header border-0">
                 <div class="w-100 row mx-1 border-bottom pt-2 pb-3">
                     <div class="col-auto d-flex align-items-center">
-                        <h5 class="modal-title tituloModal" id="exampleModalLabel">Realizar Factura</h5>
+                        <h5 class="modal-title tituloModal" id="exampleModalLabel">Busqueda de Proveedores</h5>
                     </div>
                     <div class="col-auto ms-auto d-flex align-items-center"><button type="button" class="ms-auto btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
                 </div>
             </div>
             <div class="modal-body mt-2 mb-3">
-                <form class="form-cli row" method="GET" action="{{url('/propietario/factura')}}">
+                <form class="form-cli row" method="GET" action="{{url('propietario/buscarPedidoProv')}}">
                 <div class="col px-2">
                         <div class="row my-2">
                             <div class="col">
-                                <h5>Pedidos:</h5>
-                                <div class='row my-2'>
-                                    @if(isset($pedidos) && count($pedidos) > 0)
-                                        {{-- <label>Elige la Óptica:</label> --}}
-                                        <select id="optica" name="idPedido" class="form-select w-auto">
-                                        @foreach($pedidos as $pedido)
-                                        <option value="{{ $pedido->id }}">
-                                            Pedido #{{$pedido->id}} -Proveedor: {{ $pedido->proveedor->nombre }} -Fecha del Pedido: {{$pedido->fecha}}
-                                        </option>
-                                        @endforeach
-                                            </select>
-                                    @else
-                                        <p>No hay proveedores disponibles.</p>
-                                    @endif
+                                <h5>Opciones de Busqueda:</h5>
+                                <div class="input-group px-3">
+                                    <input class="form-control" type="text" placeholder="Búsqueda por NIF" name="nif">
+                                    <button class="btn btn-primary botonInputModal" type="submit" ><i class="fa-solid fa-angle-right fa-2x"></i></button>
                                 </div>
-                            </div>
-                            <div class="input-group px-3">
-                                <button class="btn btn-primary botonInputModal" type="submit" ><i class="fa-solid fa-angle-right fa-2x"></i></button>
+                                <div class="input-group px-3 mt-2">
+                                    <input class="form-control" type="text" placeholder="Búsqueda por Nombre de Proveedor" name="nombre">
+                                    <button class="btn btn-primary botonInputModal" type="submit" ><i class="fa-solid fa-angle-right fa-2x"></i></button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -503,6 +493,7 @@
         </div>
     </div>
 </div>
+
 
 
 

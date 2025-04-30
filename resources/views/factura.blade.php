@@ -17,9 +17,10 @@
         <p><strong>Estado del Pago:</strong> {{ $datosFactura['estadoPago'] }}</p>
         <h2>Proveedor</h2>
         <p><strong>Nombre:</strong> {{ $datosFactura['proveedor'] }}</p>
+        <p><strong>NIF:</strong> {{$datosFactura['nif']}}</p>
         <p><strong>Dirección:</strong> {{ $datosFactura['direccion'] }}</p>
 
-        <h2>Detalle del Pedido {{$datosFactura['idPedido']}}</h2>
+        <h2>Detalle del Pedido</h2>
             <table class="tabla-articulos ">
                 <tr>
                     <th>Artículo</th>

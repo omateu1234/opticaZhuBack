@@ -72,6 +72,7 @@ Route::view('propietario/pedido', 'pedido')->name('pedido');
 Route::view('propietario/pedidos', 'pedidos')->name('pedidos');
 Route::view('propietario/resumenPedido', 'resumenPedido')->name('resumenPedido');
 Route::view('propietario/factura', 'factura')->name('factura');
+Route::view('propietario/pedidosProveedor', 'pedidosProveedor')->name('pedidosProveedor');
 
 //Metodos Mostrar
 Route::get('mostraropticas', [AdminController::class, 'mostrarOpticas'])->name('mostrarOpticas');
@@ -109,6 +110,7 @@ Route::get('propietario/buscarEmp', [UserController::class, 'buscarEmpleadoLarav
 Route::get('propietario/buscarCli', [ClienteController::class,'buscarCli'])->name('buscarCli');
 Route::get('propietario/buscarProv', [ProveedorController::class, 'getByNifOrName'])->name('buscarProv');
 Route::get('propietario/buscarProvPedido', [ProveedorController::class, 'getByNifOrNamePedido'])->name('buscarProvPedido');
+Route::get('propietario/buscarPedidoProv', [ProveedorController::class,  'getPedidos'])->name('buscarPedidoProv');
 
 //Metodos Editar
 Route::patch('propietario/desactivar/{id}', [UserController::class, 'desactivarEmpleado'])->name('desactivar');

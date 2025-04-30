@@ -12,7 +12,7 @@ class Proveedor extends Model
     public $timestamps = false;
 
     public function pedidos(){
-        return $this->hasMany(Pedido::class);
+        return $this->hasMany(Pedido::class, 'idProveedor');
     }
 
     public function articulos(){

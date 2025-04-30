@@ -16,15 +16,17 @@ class FacturaPedidoController extends Controller
         $facturas=FacturaPedido::all();
     }
 
-    public function generarFactura(Request $request/* idPedido */){
+    public function generarFactura(Request $request){
         $idPedido = $request->query('idPedido');
         //dd($idPedido);
 
         if (!$idPedido) {
-           // return redirect()->back()->with('error', 'Pedido no encontrado.');
-            dd("fallo Entrando en generarFactura con ID: $idPedido");
+            dd("Pedido no encontrado", [
+                'idPedido' => $idPedido,
+                'consulta' => Pedido::with('lineasPedido', 'proveedor')->toSql(),
+                'bindings' => Pedido::getBindings(),
+            ]);
         }
-
 
         $pedido=Pedido::with('lineasPedido', 'proveedor')->find($idPedido);
 
@@ -34,6 +36,7 @@ class FacturaPedidoController extends Controller
             'fecha'=> now(),
             'estadoPago'=> 'pendiente',
             'proveedor'=> $pedido->proveedor->nombre,
+            'nif'=> $pedido->proveedor->nif,
             'direccion'=> $pedido->proveedor->direccion,
             'lineas'=> $pedido->lineasPedido->map(function($linea){
                 return [
@@ -46,12 +49,6 @@ class FacturaPedidoController extends Controller
             'subtotal'=> $pedido->lineasPedido->sum('importe'),
             'total'=>$pedido->lineasPedido->sum('importe')*1.21,
         ];
-        //dd($datosFactura);
-
-        /* $factura=FacturaPedido::create([
-            'fecha'=> $datosFactura['fecha'],
-            'estadoPago'=> $datosFactura['estadoPago']
-        ]); */
         return view('factura', compact('datosFactura'));
     }
 

@@ -9,6 +9,7 @@ use App\Models\Articulo;
 
 
 
+
 class LineaPedidoController extends Controller
 {
     //
@@ -33,7 +34,8 @@ class LineaPedidoController extends Controller
                 $articuloActualizado->stock += $articulo['cantidad'];
                 $articuloActualizado->save();
             }
+            $idPedido = $articulo['idPedido'];
         }
-        return redirect()->route('pedidos')->with('success', 'Linea Pedido guardado correctamente.');
+        return redirect()->route('generarFactura', ['idPedido' => $idPedido]);
     }
 }

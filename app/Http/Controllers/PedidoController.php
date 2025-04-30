@@ -11,7 +11,7 @@ use App\Models\FacturaPedido;
 class PedidoController extends Controller
 {
     public function getAll(){
-        $pedidos = Pedido::all();
+        $pedidos = Pedido::with('proveedor')->get();
         return view('pedidos', compact('pedidos'));
     }
 

@@ -25,7 +25,6 @@ class AppServiceProvider extends ServiceProvider
     {
         View::share('opticas', Optica::all());
         View::share('proveedores', Proveedor::all());
-        View::share('pedidos', Pedido::all());
 
 
     }

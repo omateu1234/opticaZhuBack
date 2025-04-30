@@ -101,4 +101,22 @@ class ProveedorController extends Controller
 
         return redirect()->route('proveedores');
     }
+
+    public function getPedidos(Request $request){
+        $request->validate([
+            'nif' => 'nullable|string|max:255',
+            'nombre' => 'nullable|string|max:255',
+        ]);
+        $nif = $request->query('nif');
+        $nombre= $request->query('nombre');
+
+        $proveedor= $this->buscarProveedor($nif, $nombre);
+
+        if ($proveedor == null) {
+            return response()->json(['message' => 'Proveedor no encontrado']);
+        }
+        $pedidos = $proveedor->pedidos;
+        return view('pedidosProveedor', compact('proveedor', 'pedidos'));
+    }
 }
+

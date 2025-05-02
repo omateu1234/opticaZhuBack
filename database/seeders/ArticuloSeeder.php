@@ -64,7 +64,7 @@ class ArticuloSeeder extends Seeder
                 'nombre'=> $articulo['nombre'],
                 'descripcion'=> $articulo['descripcion'],
                 'precioProveedor'=> $articulo['precioProveedor'],
-                'precioCliente'=> $articulo['precioProveedor'] * 1.2, // Precio cliente es un 20% más que el precio proveedo
+                'precioCliente'=> $articulo['precioProveedor'] * 1.21, // Precio cliente es un 21% más que el precio proveedo
                 'stock'=> $articulo['stock'],
                 'idProveedor'=> $articulo['idProveedor'],
                 'idOptica'=> $articulo['idOptica'],

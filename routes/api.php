@@ -9,6 +9,10 @@ use App\Http\Controllers\EmpleadoController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\AuxiliarController;
 use App\Http\Controllers\OptometristaController;
+use App\Http\Controllers\ArticuloController;
+use App\Http\Controllers\VentaController;
+use App\Http\Controllers\LineaVentaController;
+use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\API\UserController;
 
 
@@ -63,13 +67,23 @@ Route::get('/optometristasoptica/{id}', [OptometristaController::class,'listadoO
 Route::get('/clientes', [ClienteController::class,'index'])->name('clientes');
 Route::get('/citasCliente', [ClienteController::class,'citasCliente'])->name('citasCliente');
 Route::delete('/borrarCliente', [ClienteController::class, 'borrarCli'])->name('borrarCli');
-
-
 Route::get('/buscarCli', [ClienteController::class,'buscarCli'])->name('buscarCli');
+
 Route::get('/citas', [CitaController::class, 'index'])->name('citas');
 Route::get('/citasOptica', [CitaController::class, 'citaOptica'])->name('citasOptica');
 Route::get('/citasOcupadas', [CitaController::class, 'citasOcupadas'])->name('citasOcupadas');
 Route::delete('/borrarCita', [CitaController::class , 'borrarCita'])->name('borrarCita');
+
+Route::get('/proveedores', [ProveedorController::class,  'getAllApi'])->name('proveedores');
+
+Route::get('/articulos', [ArticuloController::class,  'getAll'])->name('articulos');
+Route::post('/crearArticulo', [ArticuloController::class, 'guardar'])->name('crearArticulo');
+Route::get('/buscarArticulo', [ArticuloController::class, 'getById'])->name('buscarARticulo');
+
+Route::get('ventas', [VentaController::class ,'getAll'])->name('ventas');
+Route::post('/crearVenta', [VentaController::class, 'guardar'])->name('crearVenta');
+Route::post('/insertarLineaVenta', [LineaVentaController::class, 'guardar'])->name('insertarLineaVenta');
+
 
 //Cambiar por id cuando este el login angular.
 //Route::get('/empleadosOptica/{id}', [OpticaController::class, 'empleadosOptica'])->name('empleadosOptica');

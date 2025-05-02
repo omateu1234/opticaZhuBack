@@ -38,7 +38,7 @@
     <h3>Productos</h3>
     <form class="form-cli row" method="POST" action="{{url('propietario/insertarLineaPedido')}}">
         @csrf
-            <table class="table-container table table-striped">
+            <table class="table-container table table-bordered table-striped">
             <thead>
                 <tr>
                     <th>Nombre</th>

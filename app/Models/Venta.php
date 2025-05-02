@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Venta extends Model
 {
     //
-    protected $fillable = ['fecha', 'importe', 'estadoPago'];
+    protected $fillable = ['fecha', 'importe', 'metodoPago', 'idCliente'];
     public $timestamps = false;
 
     public function optica()

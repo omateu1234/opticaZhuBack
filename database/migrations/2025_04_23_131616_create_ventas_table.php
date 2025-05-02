@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('ventas', function (Blueprint $table) {
             $table->increments('id')->primary();
             $table->date('fecha');
-            $table->decimal('importe', 8, 2);
-            /* $table->enum('estadoPago', ['pendiente', 'pagado', 'cancelado'])->default('pendiente'); */
+           /*  $table->decimal('importe', 8, 2); */
+            $table->enum('estado', ['pendiente','recibido', 'cancelado'])->default('pendiente');
             $table->enum('metodoPago', ['efectivo', 'tarjeta', 'transferencia'])->default('transferencia');
             $table->unsignedInteger('idOptica')->nullable();
             $table->unsignedInteger('idCliente')->nullable();
-            
+
             $table->foreign('idOptica')->references('id')->on('opticas')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('idCliente')->references('id')->on('clientes')->onDelete('cascade')->onUpdate('cascade');
 

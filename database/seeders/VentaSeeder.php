@@ -19,35 +19,35 @@ class VentaSeeder extends Seeder
         $ventas= [
             [
                 'fecha' => Carbon::now()->subDays(10),
-                'importe' => 150.00,
+                'estado' => 'pendiente',
                 'metodoPago' => 'transferencia',
                 'idOptica' => 1,
                 'idCliente' => 1,
             ],
             [
                 'fecha' => Carbon::now()->subDays(8),
-                'importe' => 89.90,
+                'estado' => 'pendiente',
                 'metodoPago' => 'efectivo',
                 'idOptica' => 2,
                 'idCliente' => 2,
             ],
             [
                 'fecha' => Carbon::now()->subDays(6),
-                'importe' => 49.99,
+                'estado' => 'cancelado',
                 'metodoPago' => 'tarjeta',
                 'idOptica' => 1,
                 'idCliente' => 1,
             ],
             [
                 'fecha' => Carbon::now()->subDays(3),
-                'importe' => 200.00,
+                'estado' => 'recibido',
                 'metodoPago' => 'efectivo',
                 'idOptica' => 2,
                 'idCliente' => 2,
             ],
             [
                 'fecha' => Carbon::now(),
-                'importe' => 120.00,
+                'estado' => 'recibido',
                 'metodoPago' => 'transferencia',
                 'idOptica' => 1,
                 'idCliente' => 1,
@@ -57,7 +57,7 @@ class VentaSeeder extends Seeder
         foreach ($ventas as $venta){
             DB::table('ventas')->insert([
                 'fecha'=> $venta['fecha'],
-                'importe'=> $venta['importe'],
+                'estado'=>$venta['estado'],
                 'metodoPago'=> $venta['metodoPago'],
                 'idOptica'=> $venta['idOptica'],
                 'idCliente'=> $venta['idCliente'],

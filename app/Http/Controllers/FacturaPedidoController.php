@@ -30,7 +30,6 @@ class FacturaPedidoController extends Controller
 
         $pedido=Pedido::with('lineasPedido', 'proveedor')->find($idPedido);
 
-
         $datosFactura=[
             'idPedido'=> $pedido->id,
             'fecha'=> now(),

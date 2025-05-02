@@ -13,6 +13,11 @@ class ProveedorController extends Controller
          return view('proveedores', compact('proveedores'));
     }
 
+    function getAllApi(){
+        $proveedores = Proveedor::all();
+        return response()->json($proveedores);
+    }
+
     function getAllSelect(){
         $proveedores = Proveedor::all();
         return view('navbar', compact('proveedores'));

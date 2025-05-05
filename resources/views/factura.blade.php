@@ -13,6 +13,7 @@
 
     <form method="POST" action="{{url('propietario/pagarFactura')}}">
         @csrf
+        <p><strong>Número Factura:</strong> {{ $datosFactura['idPedido'] }}</p>
         <p><strong>Fecha:</strong> {{ $datosFactura['fecha']->format('d-m-Y') }}</p>
         <p><strong>Estado del Pago:</strong> {{ $datosFactura['estadoPago'] }}</p>
         <h2>Proveedor</h2>

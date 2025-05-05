@@ -59,7 +59,7 @@
                     <td class="precio">{{$articulo->precioProveedor}}€</td>
                     <td>{{$articulo->stock}}</td>
 
-                    <td><input type="number" class="cantidad" name="articulos[{{$articulo->id}}][cantidad]" min="1" max="199" value="0" data-precio="{{$articulo->precioProveedor}}"></td>
+                    <td><input type="number" class="cantidad" name="articulos[{{$articulo->id}}][cantidad]" min="0" max="199" value="0" data-precio="{{$articulo->precioProveedor}}"></td>
 
                     <td><input type="text" class="importe" name="articulos[{{$articulo->id}}][importe]" readonly></td>
                     <input type="hidden" name="articulos[{{$articulo->id}}][precio_unitario]" value="{{$articulo->precioProveedor}}">

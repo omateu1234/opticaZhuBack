@@ -27,7 +27,7 @@ class Venta extends Model
 
     public function lineasVenta()
     {
-        return $this->hasMany(LineaVenta::class);
+        return $this->hasMany(LineaVenta::class, 'idVenta');
     }
 
 }

@@ -12,6 +12,7 @@ use App\Http\Controllers\OptometristaController;
 use App\Http\Controllers\ArticuloController;
 use App\Http\Controllers\VentaController;
 use App\Http\Controllers\LineaVentaController;
+use App\Http\Controllers\FacturaVentaController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\API\UserController;
 
@@ -83,6 +84,9 @@ Route::get('/buscarArticulo', [ArticuloController::class, 'getById'])->name('bus
 Route::get('ventas', [VentaController::class ,'getAll'])->name('ventas');
 Route::post('/crearVenta', [VentaController::class, 'guardar'])->name('crearVenta');
 Route::post('/insertarLineaVenta', [LineaVentaController::class, 'guardar'])->name('insertarLineaVenta');
+
+Route::get('/generarFactura', [FacturaVentaController::class, 'generarFactura'])->name('generarFactura');
+Route::post('/pagarFactura', [FacturaVentaController::class, 'pagarFactura'])->name('pagarFactura');
 
 
 //Cambiar por id cuando este el login angular.

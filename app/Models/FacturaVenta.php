@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class FacturaVenta extends Model
 {
     //
-    protected $fillable = ['fecha', 'estadoPago', 'importe'];
+    protected $table = 'factura_venta';
+    protected $fillable = ['fecha', 'estadoPago', 'idVenta'];
     public $timestamps = false;
 
 

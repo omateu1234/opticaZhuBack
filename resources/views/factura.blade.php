@@ -21,7 +21,7 @@
         <p><strong>NIF:</strong> {{$datosFactura['nif']}}</p>
         <p><strong>Dirección:</strong> {{ $datosFactura['direccion'] }}</p>
 
-        <h2>Detalle del Pedido</h2>
+        <h2>Detalles del Pedido</h2>
             <table class="tabla-articulos ">
                 <tr>
                     <th>Artículo</th>
@@ -39,8 +39,8 @@
                 @endforeach
             </table>
 
-            <p><strong>Subtotal:</strong> {{ number_format($datosFactura['subtotal'], 2) }}</p>
-            <p><strong>Total (IVA incluido):</strong> {{ number_format($datosFactura['total'], 2) }}</p>
+            <p><strong>Subtotal:</strong> {{ number_format($datosFactura['subtotal'], 2) }}€</p>
+            <p><strong>Total (IVA incluido):</strong> {{ number_format($datosFactura['total'], 2) }}€</p>
 
             <input type="hidden" name="fecha" value="{{$datosFactura['fecha']}}">
             <input type="hidden" name="estadoPago" value="pagado">

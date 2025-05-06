@@ -17,15 +17,16 @@ class FacturaPedidoController extends Controller
     }
 
     public function generarFactura(Request $request){
-        $idPedido = $request->query('idPedido');
+        $idPedido = $request->input('idPedido');
         //dd($idPedido);
 
         if (!$idPedido) {
-            dd("Pedido no encontrado", [
+            /* dd("Pedido no encontrado", [
                 'idPedido' => $idPedido,
                 'consulta' => Pedido::with('lineasPedido', 'proveedor')->toSql(),
                 'bindings' => Pedido::getBindings(),
-            ]);
+            ]); */
+            dd($request->all());
         }
 
         $pedido=Pedido::with('lineasPedido', 'proveedor')->find($idPedido);
@@ -33,7 +34,7 @@ class FacturaPedidoController extends Controller
         $datosFactura=[
             'idPedido'=> $pedido->id,
             'fecha'=> now(),
-            'estadoPago'=> 'pendiente',
+            'estadoPago'=> $pedido->estado,
             'proveedor'=> $pedido->proveedor->nombre,
             'nif'=> $pedido->proveedor->nif,
             'direccion'=> $pedido->proveedor->direccion,

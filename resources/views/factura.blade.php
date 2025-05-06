@@ -33,8 +33,8 @@
                 <tr>
                     <td>{{ $linea['articulo'] }}</td>
                     <td>{{ $linea['cantidad'] }}</td>
-                    <td>{{ number_format($linea['precio_unitario'], 2) }}</td>
-                    <td>{{ number_format($linea['importe'], 2) }}</td>
+                    <td>{{ number_format($linea['precio_unitario'], 2) }}€</td>
+                    <td>{{ number_format($linea['importe'], 2) }}€</td>
                 </tr>
                 @endforeach
             </table>
@@ -46,9 +46,11 @@
             <input type="hidden" name="estadoPago" value="pagado">
             <input type="hidden" name="idPedido" value="{{$datosFactura['idPedido']}}">
 
+            @if ($datosFactura['estadoPago']== 'pendiente')
             <div class="col d-flex justify-content-end my-5">
                 <button class="btn btn-primary botonNuevaCita" type="submit">Pagar</button>
             </div>
+            @endif
     </form>
 </div>
 

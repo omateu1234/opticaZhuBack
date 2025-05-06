@@ -6,9 +6,6 @@
         <div class="col-auto me-auto">
             <h1 class="tituloPagina">Pedido a {{$proveedor->nombre}}</h1>
         </div>
-        <div class="col d-flex justify-content-end">
-            <a href="{{url('propietario/pedidos')}}"><i class="fa-solid fa-x fa-lg"></i></a>
-        </div>
 
 
         <!-- {{-- <div class="col-auto ms-auto d-flex ">

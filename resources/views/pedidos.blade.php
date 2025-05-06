@@ -30,6 +30,8 @@
             <tr class="table-row"
                 @if ($pedido->estado !== 'recibido' && $pedido->estado !== 'cancelado')
                 onclick="window.location='{{route('pedido', $pedido->id )}}'"
+                @else
+                    onclick="window.location='{{route('generarFactura', ['idPedido' => $pedido->id] )}}'"
                 @endif>
                 <td>{{$pedido->id}}</td>
                 <td>{{$pedido->fecha}}</td>

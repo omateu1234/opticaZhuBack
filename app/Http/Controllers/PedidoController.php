@@ -11,7 +11,7 @@ use App\Models\FacturaPedido;
 class PedidoController extends Controller
 {
     public function getAll(){
-        $pedidos = Pedido::with('proveedor')->get();
+        $pedidos = Pedido::with('proveedor', 'facturaPedido')->get();
         return view('pedidos', compact('pedidos'));
     }
 
@@ -23,6 +23,7 @@ class PedidoController extends Controller
             'idProveedor' => 'required|integer',
         ]);
         Pedido::create($datos);
+
 
         return redirect()->route('pedidos')->with('success', 'Pedido guardado correctamente.');
     }
@@ -44,5 +45,28 @@ class PedidoController extends Controller
         $articulos = $proveedor->articulos;
 
         return view('pedido', compact('proveedor', 'articulos', 'pedido' ));
+    }
+
+    public function cancelarPedido($idPedido){
+        $pedido = Pedido::find($idPedido);
+        //dd($pedido);
+        if($pedido){
+            $pedido->estado ='cancelado';
+            $pedido->save();
+            //dd($pedido);
+        }
+        return redirect()->route('pedidos')->with('success', 'Pedido cancelado.');
+    }
+
+    public function recibirPedido($idPedido){
+        $pedido = Pedido::with('facturaPedido')->findOrFail($idPedido);
+        //dd($pedido);
+        /* if($pedido->recibir()){
+            dd($pedido);
+            return redirect()->back()->withErrors('El pedido no puede ser recibido.');
+        } */
+        $pedido->estado ='recibido';
+        $pedido->save();
+        return redirect()->route('pedidos')->with('success', 'Pedido recibido.');
     }
 }

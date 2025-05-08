@@ -60,7 +60,7 @@ $idEmpleado= $empleado->id;
         </div>
     </div>
 
-    
+
 
     <div class="row mt-4 ">
         <div class="col-md-11 my-5 d-flex justify-content-end">
@@ -88,7 +88,7 @@ $idEmpleado= $empleado->id;
                             <div class="row my-2">
                                 <div class="col">
                                     <button type="submit" class="btn btn-primary botonOutline me-4"><i class="fa-solid fa-trash"></i> Borrar</button>
-                                    <button class="btn btn-primary  botonNuevaCita justify-content-end "><i class="fa-solid fa-x"></i> Cancelar</button>
+                                    <button class="btn btn-primary  botonNuevaCita justify-content-end "><i class="fa-solid fa-x" ></i> Cancelar</button>
                                 </div>
                             </div>
                         </div>

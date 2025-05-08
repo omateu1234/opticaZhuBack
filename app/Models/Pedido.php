@@ -24,11 +24,15 @@ class Pedido extends Model
     }
 
     public function facturaPedido(){
-        return $this->hasOne(FacturaPedido::class);
+        return $this->hasOne(FacturaPedido::class, 'idPedido');
     }
 
     public function lineasPedido(){
         return $this->hasMany(LineaPedido::class, 'idPedido');
     }
 
+    /**Metodo para condicionar cuando recibir pedido */
+    public function recibir(){
+        return $this->estado=='pendiente' && $this->facturaPedido && $this->facturaPedido->estadoPago=='pagado';
+    }
 }

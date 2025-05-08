@@ -70,10 +70,46 @@
                 @endforelse
             </tbody>
         </table>
-        <div class="col d-flex justify-content-end my-5">
+        <div class="col d-flex justify-content-between my-5">
+            <button type="button" class="botonOutline" data-bs-toggle="modal" data-bs-target="#borrarEmpModal">Cancelar</button>
             <button class="btn btn-primary botonNuevaCita" type="submit">Siguiente</button>
         </div>
     </form>
+
+
+</div>
+
+    <div class="modal  fade" id="borrarEmpModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <div class="w-100 row mx-1 border-bottom pt-2 pb-3">
+                        <div class="col-auto d-flex align-items-center">
+                            <h5 class="modal-title tituloModal" id="exampleModalLabel">¿Quieres cancelar el pedido?</h5>
+                        </div>
+                        <div class="col-auto ms-auto d-flex align-items-center"><button type="button" class="ms-auto btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                    </div>
+                </div>
+                <div class="modal-body mt-2 mb-3">
+                    <form class="form-cli row" method="post" action="{{route('cancelarPedido', $pedido->id)}}">
+                        @csrf
+                        @method('PATCH')
+                        <div class="col px-2">
+                            <div class="row my-2 d-flex justify-content-between">
+                                <div class="col">
+                                    <button type="submit" class="btn btn-primary botonOutline me-4"><i class="fa-solid fa-trash"></i> Si</button>
+                                </div>
+                                <div class="col">
+                                <button type="button" class="btn btn-primary  botonNuevaCita justify-content-end " data-bs-dismiss="modal"><i class="fa-solid fa-x"></i> No</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 @endsection

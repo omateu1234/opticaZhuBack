@@ -115,6 +115,8 @@ Route::get('propietario/buscarPedidoProv', [ProveedorController::class,  'getPed
 //Metodos Editar
 Route::patch('propietario/desactivar/{id}', [UserController::class, 'desactivarEmpleado'])->name('desactivar');
 Route::patch('propietario/activar/{id}', [UserController::class, 'activarEmpleado'])->name('activar');
+Route::patch('propietario/cancelarPedido/{id}', [PedidoController::class, 'cancelarPedido'])->name('cancelarPedido');
+Route::patch('propietario/recibirPedido/{id}', [PedidoController::class, 'recibirPedido'])->name('recibirPedido');
 
 
 

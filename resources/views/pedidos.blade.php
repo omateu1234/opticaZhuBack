@@ -40,7 +40,7 @@
                 <td>{{$pedido->metodoPago}}</td>
                 <td>{{$pedido->proveedor->nombre}}</td>
                 @if ($pedido->recibir())
-                <td><button type="button" class="botonOutline" data-bs-toggle="modal" data-bs-target="#borrarEmpModal" onclick="event.stopPropagation()">Recibir</button></td>
+                <td><button type="button" class="botonRecibir" data-bs-toggle="modal" data-bs-target="#borrarEmpModal" onclick="event.stopPropagation()">Recibir</button></td>
                 @else
                 <td><strong> {{$pedido->estado}}</strong></td>
                 @endif
@@ -60,7 +60,7 @@
             <div class="modal-header border-0">
                 <div class="w-100 row mx-1 border-bottom pt-2 pb-3">
                     <div class="col-auto d-flex align-items-center">
-                        <h5 class="modal-title tituloModal" id="exampleModalLabel">Recibe el pedido</h5>
+                        <h5 class="modal-title tituloModalOutline" id="exampleModalLabel">Recibe el pedido</h5>
                     </div>
                     <div class="col-auto ms-auto d-flex align-items-center"><button type="button" class="ms-auto btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
                 </div>
@@ -70,13 +70,11 @@
                     @csrf
                     @method('PATCH')
                     <div class="col px-2">
-                        <div class="row my-2 d-flex justify-content-center">
-                            <div class="col">
-                                <button type="submit" class="btn btn-primary botonOutline me-4">Recibir</button>
+                        <div class="row my-2 ">
+                            <div class="col d-flex justify-content-center">
+                                <button type="submit" class="btn btn-primary botonRecibir me-4">Recibir</button>
                             </div>
-                            <div class="col">
-                                <button type="button" class="btn btn-primary  botonNuevaCita justify-content-end " data-bs-dismiss="modal"> Cancelar</button>
-                            </div>
+
                         </div>
                     </div>
 

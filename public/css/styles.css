@@ -17,6 +17,13 @@
     /* font-family: Lexend; */
 }
 
+.tituloModalOutline {
+    color: #176E63;
+    font-size: 1.6em;
+    font-weight: 400;
+    /* font-family: Lexend; */
+}
+
 .botonFooterModal {
     border: 1px solid #DA3B00;
     background-color: #DA3B00;
@@ -60,6 +67,40 @@
     color: white;
     border-radius: 7px;
     padding: .5em 4em;
+}
+
+.botonRecibir{
+    border: 1px solid #176E63;
+    background-color: white;
+    font-weight: bolder;
+    color: #176E63;
+    border-radius: 7px;
+    padding: .5em 4em;
+    transition: all .3s ease;
+
+}
+
+.botonRecibir:hover{
+    border: 1px solid #176E63;
+    background-color: #176E63;
+    color: white;
+    border-radius: 7px;
+    padding: .5em 4em;
+}
+
+.botonRecibirOutline{
+    border: 1px solid #176E63;
+    background-color: #176E63;
+    font-weight: bolder;
+    color: white;
+    border-radius: 7px;
+    padding: .5em 4em;
+    transition: all .3s ease;
+}
+
+.botonRecibirOutline:hover {
+    background-color: #21AB96;
+    border: 1px solid #21AB96;
 }
 
 .containerPagina {
@@ -249,3 +290,5 @@
     background-color: #FFDA9F;
     color: black;
 }
+
+

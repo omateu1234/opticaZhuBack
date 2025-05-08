@@ -26,4 +26,8 @@ class Cliente extends Model
         return $this->hasMany(Ficha::class);
     }
 
+    public function ventas(){
+        return $this->hasMany(Venta::class, 'idCliente');
+    }
+
 }

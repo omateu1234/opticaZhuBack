@@ -82,6 +82,7 @@ Route::post('/crearArticulo', [ArticuloController::class, 'guardar'])->name('cre
 Route::get('/buscarArticulo', [ArticuloController::class, 'getById'])->name('buscarARticulo');
 
 Route::get('ventas', [VentaController::class ,'getAll'])->name('ventas');
+Route::get('/clienteVentas' , [ClienteController::class,  'getVentas'])->name('clienteVentas');
 Route::post('/crearVenta', [VentaController::class, 'guardar'])->name('crearVenta');
 Route::post('/insertarLineaVenta', [LineaVentaController::class, 'guardar'])->name('insertarLineaVenta');
 

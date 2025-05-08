@@ -96,14 +96,32 @@ class ClienteController extends Controller
         $id= $request->query('id');
 
         $cliente= Cliente::find($id);
-        
+
         if (!$cliente) {
             return response()->json(['error' => 'Cliente no encontrado'], 404);
         }
-    
+
         $cliente->delete();
-    
+
         return response()->json(['mensaje' => 'Cliente eliminado correctamente']);
+    }
+
+    public function getVentas(Request $request){
+        $request->validate([
+            'dni' => 'required|string'
+        ]);
+
+        $dni= $request->input('dni');
+        $cliente= Cliente::where('dni', $dni)->with('ventas')->first();
+
+        if($cliente == null){
+            dd($request->all());
+            return response()->json(['message' => 'Cliente no encontrado']);
+        }
+
+        $ventas= $cliente->ventas;
+
+        return response()->json($ventas);
     }
 
 }

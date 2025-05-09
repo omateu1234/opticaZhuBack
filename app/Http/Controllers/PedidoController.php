@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Pedido;
 use App\Models\FacturaPedido;
+use Carbon\Carbon;
 
 
 class PedidoController extends Controller
@@ -18,10 +19,10 @@ class PedidoController extends Controller
     public function guardar(Request $request){
 
         $datos= $request->validate([
-            'fecha' => 'required|date',
             'metodoPago' => 'required|string|max:255',
             'idProveedor' => 'required|integer',
         ]);
+        $datos['fecha']= Carbon::now();
         Pedido::create($datos);
 
 

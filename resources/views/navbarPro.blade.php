@@ -436,7 +436,6 @@
                                     <select name="metodoPago" id="metodoPago">
                                         <option value="transferencia">Transferencia</option>
                                         <option value="tarjeta">Tarjeta</option>
-                                        <option value="efectivo">Efectivo</option>
                                     </select>
                                 </div>
 
@@ -445,10 +444,13 @@
 
                         <div class="row my-2">
                             <div class="col px-2">
-                                <h5>Fecha:</h5>
+                               {{--  <h5>Fecha:</h5>
                                 <div class="input-group px-3">
                                     <input class="form-control" type="date"  name="fecha">
                                     <button class="btn btn-primary botonInputModal" type="submit" ><i class="fa-solid fa-angle-right fa-2x"></i></button>
+                                </div> --}}
+                                <div class="col d-flex justify-content-center">
+                                <button class="btn btn-primary botonNuevaCita" type="submit" >Pedir</button>
                                 </div>
                             </div>
                         </div>

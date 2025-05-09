@@ -57,13 +57,13 @@
 
             @if ($datosFactura['estadoPedido']== 'pendiente')
             <div class="col d-flex justify-content-end my-5">
-                <button class="btn btn-primary botonNuevaCita" data-bs-toggle="modal" data-bs-target="#borrarEmpModal" type="button">Pagar</button>
+                <button class="btn btn-primary botonNuevaCita" data-bs-toggle="modal" data-bs-target="#pagarModal" type="button">Pagar</button>
             </div>
             @endif
     </form>
 </div>
 
-<div class="modal  fade" id="borrarEmpModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal  fade" id="pagarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header border-0">

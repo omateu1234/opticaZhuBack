@@ -85,6 +85,7 @@ Route::get('ventas', [VentaController::class ,'getAll'])->name('ventas');
 Route::get('/clienteVentas' , [ClienteController::class,  'getVentas'])->name('clienteVentas');
 Route::post('/crearVenta', [VentaController::class, 'guardar'])->name('crearVenta');
 Route::post('/insertarLineaVenta', [LineaVentaController::class, 'guardar'])->name('insertarLineaVenta');
+Route::patch('/cancelarVenta', [VentaController::class, 'cancelarVenta'])->name('cancelarVenta');
 
 Route::get('/generarFactura', [FacturaVentaController::class, 'generarFactura'])->name('generarFactura');
 Route::post('/pagarFactura', [FacturaVentaController::class, 'pagarFactura'])->name('pagarFactura');

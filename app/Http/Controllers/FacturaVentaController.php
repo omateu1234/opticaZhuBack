@@ -39,7 +39,8 @@ class FacturaVentaController extends Controller
         $datosFactura=[
             'idVenta'=> $venta->id,
             'fecha'=> now(),
-            'estadoPago'=> 'pendiente',
+            'estadoPago'=> $venta->estado,
+            'metodoPago'=> $venta->metodoPago,
             'cliente'=> $venta->cliente->nombre,
             'apellido'=> $venta->cliente->apellido,
             'dni'=> $venta->cliente->dni,
@@ -64,6 +65,6 @@ class FacturaVentaController extends Controller
             $ventaActualizada->estado ='recibido';
             $ventaActualizada->save();
         }
-       
+
     }
 }

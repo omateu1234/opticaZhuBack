@@ -32,6 +32,25 @@ class VentaController extends Controller
     unset($datos['dniCliente']);
 
     Venta::create($datos);
+    }
 
+
+    public function cancelarVenta(Request $request){
+
+        $datos= $request->validate([
+            'idVenta' => 'required|numeric',
+        ]);
+
+        $idVenta= $datos['idVenta'];
+
+        $venta = Venta::find($idVenta);
+        //dd($venta);
+        if($venta){
+            $venta->estado ='cancelado';
+            $venta->save();
+            //dd($venta);
+        }else{
+            return response()->json(['message' => 'Venta no encontrada'], 404);
+        }
     }
 }

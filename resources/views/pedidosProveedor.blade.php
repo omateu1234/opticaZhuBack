@@ -4,7 +4,7 @@
 <div class="container-flex containerPagina">
     <div class="row w-100 mb-4">
         <div class="col-auto me-auto">
-            <h1 class="tituloPagina">Pedidos de {{$proveedor->nombre}}</h1>
+            <h1 class="tituloPagina">Pedidos a {{$proveedor->nombre}}</h1>
         </div>
 
         <div class="col d-flex justify-content-end">

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Venta;
 use App\Models\Cliente;
+use Carbon\Carbon;
 
 
 class VentaController extends Controller
@@ -18,11 +19,13 @@ class VentaController extends Controller
 
     public function guardar(Request $request){
         $datos= $request->validate([
-            'fecha' => 'required|date',
             'metodoPago' => 'required|string|max:255',
             'dniCliente' => 'required|string',
+            'idOptica' => 'required|integer'
         ]);
-    $cliente= Cliente::where('dni', $datos['dniCliente'])->first();
+        $datos['fecha']= Carbon::now();
+
+        $cliente= Cliente::where('dni', $datos['dniCliente'])->first();
 
     if (!$cliente) {
         return response()->json(['message' => 'Cliente no encontrado'], 404);

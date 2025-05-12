@@ -24,7 +24,7 @@ class FacturaVentaController extends Controller
             ]);
             //dd($request->all());
         }
-        $venta=Venta::with('lineasVenta', 'cliente')->find($idVenta);
+        $venta=Venta::with('lineasVenta', 'cliente', 'optica')->find($idVenta);
         if (!$venta) {
             return response()->json(['error' => 'Venta no encontrada'], 404);
         }
@@ -39,6 +39,10 @@ class FacturaVentaController extends Controller
         $datosFactura=[
             'idVenta'=> $venta->id,
             'fecha'=> now(),
+            'optica' => $venta->optica->nombre,
+            'direccion' => $venta->optica->direccion,
+            'telefonoOptica' => $venta->optica->telefono,
+            'correo' => $venta->optica->correo,
             'estadoPago'=> $venta->estado,
             'metodoPago'=> $venta->metodoPago,
             'cliente'=> $venta->cliente->nombre,

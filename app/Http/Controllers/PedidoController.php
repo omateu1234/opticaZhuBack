@@ -62,12 +62,13 @@ class PedidoController extends Controller
     public function recibirPedido($idPedido){
         $pedido = Pedido::with('facturaPedido')->findOrFail($idPedido);
         //dd($pedido);
-        /* if($pedido->recibir()){
+        if(!$pedido->recibir()){
             dd($pedido);
             return redirect()->back()->withErrors('El pedido no puede ser recibido.');
-        } */
-        $pedido->estado ='recibido';
-        $pedido->save();
-        return redirect()->route('pedidos')->with('success', 'Pedido recibido.');
+        }else{
+            $pedido->estado ='recibido';
+            $pedido->save();
+            return redirect()->route('pedidos')->with('success', 'Pedido recibido.');
+        }
     }
 }

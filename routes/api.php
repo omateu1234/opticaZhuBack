@@ -80,12 +80,14 @@ Route::get('/proveedores', [ProveedorController::class,  'getAllApi'])->name('pr
 Route::get('/articulos', [ArticuloController::class,  'getAll'])->name('articulos');
 Route::post('/crearArticulo', [ArticuloController::class, 'guardar'])->name('crearArticulo');
 Route::get('/buscarArticulo', [ArticuloController::class, 'getById'])->name('buscarARticulo');
+Route::get('/articulosOptica', [ArticuloController::class,  'articulosByOptica'])->name('articulosOptica');
 
 Route::get('ventas', [VentaController::class ,'getAll'])->name('ventas');
 Route::get('/clienteVentas' , [ClienteController::class,  'getVentas'])->name('clienteVentas');
 Route::post('/crearVenta', [VentaController::class, 'guardar'])->name('crearVenta');
 Route::post('/insertarLineaVenta', [LineaVentaController::class, 'guardar'])->name('insertarLineaVenta');
 Route::patch('/cancelarVenta', [VentaController::class, 'cancelarVenta'])->name('cancelarVenta');
+Route::get('/ventasOptica', [VentaController::class,  'getVentasByOptica'])->name('ventasOptica');
 
 Route::get('/generarFactura', [FacturaVentaController::class, 'generarFactura'])->name('generarFactura');
 Route::post('/pagarFactura', [FacturaVentaController::class, 'pagarFactura'])->name('pagarFactura');
@@ -99,5 +101,6 @@ Route::post('/loginAngular', [UserController::class, 'loginAngular'])->name('log
 
 Route::get('/buscarEmpleadoApi', [UserController::class, 'buscarEmpleadoApi'])->name('buscarEmpleadoApi');
 Route::patch('/guardarEmpleadoApi', [UserController::class, 'guardarEmpleadoApi'])->name('guardarEmpleadoApi');
+Route::get('/opticaEmpleado', [UserController::class,  'getOpticaByEmpleado'])->name('opticaCliente');
 
 

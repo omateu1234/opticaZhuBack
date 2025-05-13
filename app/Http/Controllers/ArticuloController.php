@@ -52,4 +52,16 @@ class ArticuloController extends Controller
         $datos['precioCliente']= $datos['precioProveedor']*$iva;
         $articulo= Articulo::create($datos);
     }
+
+    public function articulosByOptica(Request $request){
+        $datos= $request->validate([
+            'idOptica' => 'required|integer'
+        ]);
+        $articulos= Articulo::where('idOptica', $datos['idOptica'])->get();
+
+        if($articulos==null){
+            return response()->json(['message' => 'No hay articulos']);
+        }
+        return response()->json($articulos);
+    }
 }

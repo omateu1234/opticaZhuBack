@@ -56,4 +56,17 @@ class VentaController extends Controller
             return response()->json(['message' => 'Venta no encontrada'], 404);
         }
     }
+
+    public function getVentasByOptica(Request $request){
+        $datos= $request->validate([
+            'idOptica' => 'required'
+        ]);
+        $idOptica= $datos['idOptica'];
+
+        $ventas= Venta::where('idOptica', $idOptica)->with('cliente')->get();
+        if($ventas==null){
+            return response()->json(['message' => 'No hay Ventas']);
+        }
+        return response()->json($ventas);
+    }
 }

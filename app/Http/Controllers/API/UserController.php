@@ -324,6 +324,21 @@ class UserController extends Controller
             ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     }
 
+    public function getOpticaByEmpleado(Request $request){
+        $datos= $request->validate([
+            'id' => 'required|integer'
+        ]);
+
+        $optica=Optica::where('id', $datos['id'])->get();
+
+        if($optica==null){
+            return response()->json(['message' => 'Optica no encontrada']);
+            //dd($request->all());
+        }
+       // dd($optica);
+        return response()->json($optica);
+    }
+
     public function desactivarEmpleado($id){
         $empleado= User::find($id);
         $empleado->activo=0;

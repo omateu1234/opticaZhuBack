@@ -58,7 +58,7 @@ class User extends Authenticatable
     }
 
     public function optica(){
-        return $this->belongsTo(Optica::class);
+        return $this->belongsTo(Optica::class, 'idOptica');
     }
 
     public function auxiliar(){

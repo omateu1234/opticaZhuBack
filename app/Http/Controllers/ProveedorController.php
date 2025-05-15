@@ -123,5 +123,28 @@ class ProveedorController extends Controller
         $pedidos = $proveedor->pedidos;
         return view('pedidosProveedor', compact('proveedor', 'pedidos'));
     }
+
+    public function editar(Request $request){
+        $datos=$request->validate([
+            'id' => 'required|integer',
+            'nombre' => 'nullable|string|max:255',
+            'direccion' => 'nullable|string|max:255',
+            'codPostal' => 'nullable|string|max:5',
+            'telefono' => 'nullable|string|max:20',
+            'correo' => 'nullable|string|max:255|email',
+            'nif' => 'nullable|string|max:255',
+        ]);
+        $proveedor= Proveedor::find($datos['id']);
+        if($proveedor){
+            $proveedor->nombre= $datos['nombre'];
+            $proveedor->direccion= $datos['direccion'];
+            $proveedor->codPostal= $datos['codPostal'];
+            $proveedor->telefono= $datos['telefono'];
+            $proveedor->correo= $datos['correo'];
+            $proveedor->nif= $datos['nif'];
+            $proveedor->save();
+        }
+        return redirect()->route('perfilProv', ['id' => $datos['id']])->with('success', 'Proveedor editado con exito');
+    }
 }
 

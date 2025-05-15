@@ -75,6 +75,74 @@ $idProveedor= $proveedor->id;
         @endforelse
     </table>
 
+    <div class="row mt-4 ">
+        <div class="col-md-11 my-3 d-flex justify-content-end">
+            <button type="button" class="botonNuevaCita" data-bs-toggle="modal" data-bs-target="#editProModal">Editar</button>
+        </div>
+    </div>
+</div>
 
+
+<div class="modal modal-lg fade" id="editProModal" tabindex="-1" aria-labelledby="crearProModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <div class="w-100 row mx-1 border-bottom pt-2 pb-3">
+                    <div class="col-auto d-flex align-items-center">
+                        <h5 class="modal-title tituloModal" id="crearProModalLabel">Edita los Datos</h5>
+                    </div>
+                    <div class="col-auto ms-auto d-flex align-items-center"><button type="button" class="ms-auto btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                </div>
+            </div>
+            <div class="modal-body mt-2 mb-3">
+                <form id="form-cli " method="POST" action="{{url('editarPropietario')}}">
+                    <div class="col px-2">
+                        @csrf
+                        @method('PATCH')
+                        <div class="row my-2">
+                            <div class="col">
+                                <label class="col-form-label" for="nombre">Nombre</label>
+                                <input class="form-control" type="text" name="nombre" value="{{ $proveedor->nombre }}" id="nombre" maxlength="20">
+                            </div>
+                            <div class="col">
+                                <label class="col-form-label" for="direccion">Dirección</label>
+                                <input class="form-control" type="text" name="direccion" value="{{ $proveedor->direccion }}"  id="direccion" maxlength="40">
+                            </div>
+                        </div>
+
+                        <div class="row my-2">
+                            <div class="col">
+                                <label class="col-form-label" for="cp">Cód.Postal</label>
+                                <input class="form-control" type="text" name="codPostal" value="{{ $proveedor->codPostal }}" id="cp">
+                            </div>
+                            <div class="col">
+                                <label class="col-form-label" for="telf">Num. Telf</label>
+                                <input class="form-control" type="text" name="telefono" value="{{ $proveedor->telefono }}" id="telf" maxlength="9">
+                            </div>
+                            <div class="col">
+                                <label class="col-form-label" for="correo">Correo</label>
+                                <input class="form-control" type="email" name="correo" value="{{ $proveedor->correo }}" id="correo">
+                            </div>
+                        </div>
+
+                        <div class="row my-2">
+                            <div class='col'>
+                                <label class="col-form-label" for="nif">NIF</label>
+                                <input class="form-control w-50" type="text" name="nif" value="{{ $proveedor->nif }}" id="nif" maxlength="9">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <input type="hidden" name="id" value="{{$proveedor->id}}">
+
+            </div>
+            <div class="modal-footer border-0">
+                <button type="submit" class="botonFooterModal mx-3 mb-2">Editar</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
 @endsection
 

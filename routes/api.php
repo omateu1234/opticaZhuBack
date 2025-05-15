@@ -81,6 +81,7 @@ Route::get('/articulos', [ArticuloController::class,  'getAll'])->name('articulo
 Route::post('/crearArticulo', [ArticuloController::class, 'guardar'])->name('crearArticulo');
 Route::get('/buscarArticulo', [ArticuloController::class, 'getById'])->name('buscarARticulo');
 Route::get('/articulosOptica', [ArticuloController::class,  'articulosByOptica'])->name('articulosOptica');
+Route::patch('/actualizarArticulo', [ArticuloController::class, 'editar'])->name('actualizarArticulo');
 
 Route::get('ventas', [VentaController::class ,'getAll'])->name('ventas');
 Route::get('/clienteVentas' , [ClienteController::class,  'getVentas'])->name('clienteVentas');

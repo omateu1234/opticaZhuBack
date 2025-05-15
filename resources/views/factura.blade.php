@@ -4,7 +4,7 @@
 <div class="container-flex containerPagina">
     <div class="row w-100 mb-4">
         <div class="col-auto me-auto">
-            <h1 class="tituloPagina">Factura  </h1>
+            <h1 class="tituloPagina">Resumen de Pedido  </h1>
         </div>
         <div class="col d-flex justify-content-end">
             <a href="{{url('propietario/pedidos')}}"><i class="fa-solid fa-x fa-lg"></i></a>

@@ -68,7 +68,7 @@
                 </tr>
                     @empty
                 <tr>
-                    <td colspan="4">No hay Productos para este proveedor.</td>
+                    <td colspan="6">No hay Productos para este proveedor.</td>
                 </tr>
                 @endforelse
             </tbody>

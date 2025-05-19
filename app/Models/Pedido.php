@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Pedido extends Model
 {
     //
-    protected $fillable = ['fecha', 'estado', 'metodoPago', 'idProveedor' ];
+    protected $fillable = ['fecha', 'estado', 'metodoPago', 'estadoPago' ,'idProveedor' ];
     public $timestamps = false;
 
     public function auxiliar()

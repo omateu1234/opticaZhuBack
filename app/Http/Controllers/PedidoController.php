@@ -53,6 +53,7 @@ class PedidoController extends Controller
         //dd($pedido);
         if($pedido){
             $pedido->estado ='cancelado';
+            $pedido->estadoPago = 'cancelado';
             $pedido->save();
             //dd($pedido);
         }
@@ -62,7 +63,7 @@ class PedidoController extends Controller
     public function recibirPedido($idPedido){
         $pedido = Pedido::with('facturaPedido')->findOrFail($idPedido);
         //dd($pedido);
-        if(!$pedido->recibir()){
+        if(!$pedido->estado=='pendiente' &&  !$pedido->estadoPago=='pagado'){
             dd($pedido);
             return redirect()->back()->withErrors('El pedido no puede ser recibido.');
         }else{
@@ -70,5 +71,21 @@ class PedidoController extends Controller
             $pedido->save();
             return redirect()->route('pedidos')->with('success', 'Pedido recibido.');
         }
+    }
+
+    public function pagarPedido(Request $request){
+        $datos= $request->validate([
+            'fecha' => 'nullable|date',
+            'estadoPago' => 'required|string|max:255',
+            'idPedido' => 'required|integer',
+        ]);
+        //FacturaPedido::create($datos);
+
+        $pedidoActualizado=Pedido::find($datos['idPedido']);
+        if($pedidoActualizado){
+            $pedidoActualizado->estadoPago ='pagado';
+            $pedidoActualizado->save();
+        }
+        return redirect()->route('pedidos')->with('success', 'Pedido pagado correctamente.');
     }
 }

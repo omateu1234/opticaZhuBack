@@ -16,13 +16,13 @@
                 <th>Estado</th>
                 <th>Metodo Pago</th>
                 <th>Proveedor</th>
-                <th>Recibir</th>
+                <th>Estado Pago</th>
             </tr>
         </thead>
         <tbody>
             @foreach($pedidos as $pedido)
                 <tr class="table-row"
-                    @if ($pedido->estado !== 'recibido' && $pedido->estado !== 'cancelado')
+                    @if ($pedido->estado !== 'recibido' && $pedido->estado !== 'cancelado' && $pedido->estaodPago == 'pagado')
                         onclick="window.location='{{route('pedido', $pedido->id )}}'"
                     @else
                         onclick="window.location='{{route('generarFactura', ['idPedido' => $pedido->id] )}}'"
@@ -32,12 +32,12 @@
                     <td>{{$pedido->estado}}</td>
                     <td>{{$pedido->metodoPago}}</td>
                     <td>{{$pedido->proveedor->nombre}}</td>
-                    @if ($pedido->recibir())
+                    @if ($pedido->estado=='pendiente' && $pedido->estadoPago=='pagado')
                     <td>
                         <button type="button" class="botonRecibir" data-bs-toggle="modal" data-bs-target="#modalPedido{{$pedido->id}}" onclick="event.stopPropagation()">Recibir</button>
                     </td>
                     @else
-                    <td><strong> {{$pedido->estado}}</strong></td>
+                    <td><strong> {{$pedido->estadoPago}}</strong></td>
                     @endif
                 </tr>
 

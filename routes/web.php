@@ -118,6 +118,7 @@ Route::patch('propietario/activar/{id}', [UserController::class, 'activarEmplead
 Route::patch('propietario/cancelarPedido/{id}', [PedidoController::class, 'cancelarPedido'])->name('cancelarPedido');
 Route::patch('propietario/recibirPedido/{id}', [PedidoController::class, 'recibirPedido'])->name('recibirPedido');
 Route::patch('editarPropietario', [ProveedorController::class, 'editar'])->name('editarPropietario');
+Route::patch('pagarPedido' , [PedidoController::class, 'pagarPedido'])->name('pagarPedido');
 
 
 

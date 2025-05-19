@@ -75,8 +75,9 @@
                 </div>
             </div>
             <div class="modal-body mt-2 mb-3">
-                <form class="form-cli row" method="post" action="{{url('propietario/pagarFactura')}}">
+                <form class="form-cli row" method="post" action="{{url('pagarPedido')}}">
                     @csrf
+                    @method('PATCH')
                     <div class="col px-2">
                         @if ($datosFactura['metodoPago'] == 'transferencia')
                             <label class="col-form-label">IBAN</label>
@@ -91,8 +92,8 @@
                             <label class="col-form-label">Código de Seguridad (CVC)</label>
                             <input class="form-control" type="text" pattern="^[0-9]{3,4}$" title="Por favor, introduce un CVC válido.">
                         @endif
-                        <input type="hidden" name="fecha" value="{{$datosFactura['fecha']}}">
-                        <input type="hidden" name="estadoPago" value="pagado">
+{{--                         <input type="hidden" name="fecha" value="{{$datosFactura['fecha']}}">--}}
+                       <input type="hidden" name="estadoPago" value="pagado">
                         <input type="hidden" name="idPedido" value="{{$datosFactura['idPedido']}}">
                         <div class="row my-2">
                             <div class="col d-flex justify-content-center">
@@ -100,7 +101,6 @@
                             </div>
                         </div>
                     </div>
-
                 </form>
             </div>
         </div>

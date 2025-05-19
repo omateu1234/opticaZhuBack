@@ -16,6 +16,7 @@ return new class extends Migration
             $table->date('fecha');
             $table->enum('estado', ['pendiente','recibido', 'cancelado'])->default('pendiente');
             $table->enum('metodoPago', ['efectivo', 'tarjeta', 'transferencia'])->default('transferencia');
+            $table->enum('estadoPago', ['pendiente','pagado', 'cancelado'])->default('pendiente');
             $table->unsignedInteger('idAuxiliar')->nullable();
             $table->unsignedInteger('idProveedor')->nullable();
             $table->unsignedInteger('idOptica')->nullable();

@@ -5,7 +5,7 @@
 
         <li class="nav-item sidebarLi">
             <div class="optionText">
-                <a class="sidebar-optionA" href="{{url('propietario/citas')}}">Citas</a>
+                <a class="sidebar-optionA" href="{{url('propietario/citas')}}"><i class="fa-solid fa-calendar-days"></i> Citas</a>
             </div>
             <ul class="dropdown-menu">
             </ul>
@@ -25,7 +25,7 @@
 
         <li class="nav-item sidebarLi">
             <div class="optionText">
-                <a class="dropdown-toggle sidebar-optionA" data-bs-toggle="collapse" href="#clienteSublist" role="button" aria-expanded="false" aria-controls="clienteSublist">Clientes</a>
+                <a class="dropdown-toggle sidebar-optionA" data-bs-toggle="collapse" href="#clienteSublist" role="button" aria-expanded="false" aria-controls="clienteSublist"><i class="fa-solid fa-person"></i> Clientes</a>
             </div>
             <ul class="collapse list-unstyled" id="clienteSublist">
                 <div class="submenu">
@@ -37,7 +37,7 @@
         </li>
         <li class="nav-item sidebarLi">
             <div class="optionText">
-                <a class="dropdown-toggle sidebar-optionA" data-bs-toggle="collapse" href="#empleadoSublist" role="button" aria-expanded="false" aria-controls="empleadoSublist">Empleados</a>
+                <a class="dropdown-toggle sidebar-optionA" data-bs-toggle="collapse" href="#empleadoSublist" role="button" aria-expanded="false" aria-controls="empleadoSublist"><i class="fa-solid fa-people-group"></i> Empleados</a>
             </div>
             <ul class="collapse list-unstyled" id="empleadoSublist">
                 <div class="submenu">
@@ -49,7 +49,7 @@
         </li>
         <li class="nav-item sidebarLi">
             <div class="optionText">
-                <a class="dropdown-toggle sidebar-optionA" data-bs-toggle="collapse" href="#proveedorSubList" role="button" aria-expanded="false" aria-controls="proveedorSubList">Proveedores</a>
+                <a class="dropdown-toggle sidebar-optionA" data-bs-toggle="collapse" href="#proveedorSubList" role="button" aria-expanded="false" aria-controls="proveedorSubList"><i class="fa-solid fa-truck"></i> Proveedores</a>
             </div>
             <ul class="collapse list-unstyled" id="proveedorSubList">
                 <div class="submenu">
@@ -61,7 +61,7 @@
         </li>
         <li class="nav-item sidebarLi">
             <div class="optionText">
-                <a class="dropdown-toggle sidebar-optionA" data-bs-toggle="collapse" href="#pedidosSubList" role="button" aria-expanded="false" aria-controls="proveedorSubList">Pedidos</a>
+                <a class="dropdown-toggle sidebar-optionA" data-bs-toggle="collapse" href="#pedidosSubList" role="button" aria-expanded="false" aria-controls="proveedorSubList"><i class="fa-solid fa-box"></i> Pedidos</a>
             </div>
             <ul class="collapse list-unstyled" id="pedidosSubList">
                 <div class="submenu">
@@ -73,7 +73,7 @@
         </li>
         <li class="nav-item sidebarLi">
             <div class="optionText">
-                <a class="sidebar-optionA" href="{{url('propietario/opticas')}}">Ópticas</a>
+                <a class="sidebar-optionA" href="{{url('propietario/opticas')}}"><i class="fa-solid fa-house"></i> Ópticas</a>
             </div>
             <ul class="dropdown-menu">
             </ul>

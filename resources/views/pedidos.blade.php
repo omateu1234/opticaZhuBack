@@ -22,7 +22,7 @@
         <tbody>
             @foreach($pedidos as $pedido)
                 <tr class="table-row"
-                    @if ($pedido->estado !== 'recibido' && $pedido->estado !== 'cancelado' && $pedido->estaodPago == 'pagado')
+                    @if ($pedido->estado !== 'recibido' && $pedido->estado !== 'cancelado' && $pedido->estadoPago !== 'pagado')
                         onclick="window.location='{{route('pedido', $pedido->id )}}'"
                     @else
                         onclick="window.location='{{route('generarFactura', ['idPedido' => $pedido->id] )}}'"

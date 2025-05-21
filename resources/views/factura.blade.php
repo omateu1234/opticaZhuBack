@@ -51,11 +51,12 @@
             </table>
 
             <p><strong>Subtotal:</strong> {{ number_format($datosFactura['subtotal'], 2) }}€</p>
+            <p><strong>IVA (21%):</strong> {{ number_format($datosFactura['subtotal'] * 0.21, 2) }}€</p>
             <p><strong>Total (IVA incluido):</strong> {{ number_format($datosFactura['total'], 2) }}€</p>
 
 
 
-            @if ($datosFactura['estadoPedido']== 'pendiente')
+            @if ($datosFactura['estadoPedido']== 'pendiente' && $datosFactura['estadoPago'] !=='pagado')
             <div class="col d-flex justify-content-end my-5">
                 <button class="btn btn-primary botonNuevaCita" data-bs-toggle="modal" data-bs-target="#pagarModal" type="button">Pagar</button>
             </div>

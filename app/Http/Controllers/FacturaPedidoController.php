@@ -36,6 +36,7 @@ class FacturaPedidoController extends Controller
             'fecha'=> now(),
             'metodoPago'=> $pedido->metodoPago,
             'estadoPedido'=> $pedido->estado,
+            'estadoPago'=> $pedido->estadoPago,
             'proveedor'=> $pedido->proveedor->nombre,
             'nif'=> $pedido->proveedor->nif,
             'direccion'=> $pedido->proveedor->direccion,

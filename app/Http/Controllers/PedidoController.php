@@ -76,7 +76,7 @@ class PedidoController extends Controller
     public function pagarPedido(Request $request){
         $datos= $request->validate([
             'fecha' => 'nullable|date',
-            'estadoPago' => 'required|string|max:255',
+            'estadoPago' => 'nullable|string|max:255',
             'idPedido' => 'required|integer',
         ]);
         //FacturaPedido::create($datos);

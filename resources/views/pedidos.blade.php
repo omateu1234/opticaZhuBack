@@ -8,7 +8,18 @@
         </div>
 
     </div>
-    <table class="table-container table table-striped">
+
+    <script>
+       $(document).ready(function () {
+            $('#tablaPedidos').DataTable({
+                language: {
+                    url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json' // Traducción al español
+                }
+            });
+        });
+    </script>
+
+    <table class="table-container table table-striped" id="tablaPedidos">
         <thead>
             <tr>
                 <th>ID</th>

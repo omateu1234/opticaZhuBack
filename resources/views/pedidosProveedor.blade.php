@@ -10,12 +10,19 @@
         <div class="col d-flex justify-content-end">
             <a href="{{url('propietario/pedidos')}}"><i class="fa-solid fa-x fa-lg"></i></a>
         </div>
-
-        <!-- {{-- <div class="col-auto ms-auto d-flex ">
-            <button class="botonNuevaCita" data-bs-toggle="modal" data-bs-target="#buscarCliModal2">Nueva Cita</button>
-        </div> --}} -->
     </div>
-    <table class="table-container table table-striped">
+
+    <script>
+        $(document).ready(function () {
+             $('#tablaPedidosProv').DataTable({
+                 language: {
+                     url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json' // Traducción al español
+                 }
+             });
+         });
+     </script>
+
+    <table class="table-container table table-striped" id="tablaPedidosProv">
         <thead>
             <tr>
                 <th>ID</th>

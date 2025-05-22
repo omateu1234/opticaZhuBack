@@ -359,33 +359,33 @@
                         <div class="row my-2">
                             <div class="col">
                                 <label class="col-form-label" for="nombre">Nombre</label>
-                                <input class="form-control" type="text" name="nombre" id="nombre" maxlength="20">
+                                <input class="form-control" type="text" name="nombre" id="nombre" maxlength="20" required>
                             </div>
                             <div class="col">
                                 <label class="col-form-label" for="direccion">Dirección</label>
-                                <input class="form-control" type="text" name="direccion" id="direccion" maxlength="40">
+                                <input class="form-control" type="text" name="direccion" id="direccion" maxlength="40" required>
                             </div>
                         </div>
 
                         <div class="row my-2">
                             <div class="col">
                                 <label class="col-form-label" for="cp">Cód.Postal</label>
-                                <input class="form-control" type="text" name="codPostal" id="cp">
+                                <input class="form-control" type="text" name="codPostal" id="cp" required pattern="^(0[1-9]|[1-4][0-9]|5[0-2])[0-9]{3}$">
                             </div>
                             <div class="col">
                                 <label class="col-form-label" for="telf">Num. Telf</label>
-                                <input class="form-control" type="text" name="telefono" id="telf" maxlength="9">
+                                <input class="form-control" type="text" name="telefono" id="telf" maxlength="9" required pattern="^(\+34|0034|34)?[6|7|8|9][0-9]{8}$">
                             </div>
                             <div class="col">
                                 <label class="col-form-label" for="correo">Correo</label>
-                                <input class="form-control" type="email" name="correo" id="correo">
+                                <input class="form-control" type="email" name="correo" id="correo" required>
                             </div>
                         </div>
 
                         <div class="row my-2">
                             <div class='col'>
                                 <label class="col-form-label" for="nif">NIF</label>
-                                <input class="form-control w-50" type="text" name="nif" id="nif" maxlength="9">
+                                <input class="form-control w-50" type="text" name="nif" id="nif" maxlength="9" required pattern="^[0-9]{8}[A-HJ-NP-TV-Z]$">
                             </div>
                         </div>
 

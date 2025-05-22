@@ -7,27 +7,17 @@
             <h1 class="tituloPagina">Proveedores</h1>
         </div>
 
-        <!-- <div class="col d-flex justify-content-end">
-            <a href="{{url('propietario/opticas')}}"><i class="fa-solid fa-x fa-lg"></i></a>
-        </div> -->
+        <script>
+            $(document).ready(function () {
+                $('#tablaProveedores').DataTable({
+                    language: {
+                        url: '//cdn.datatables.net/plug-ins/1.13.7/i18n/es-ES.json' // Traducción al español
+                    }
+                });
+            });
+         </script>
 
-        <!-- {{-- <div class="col-auto ms-auto d-flex ">
-            <button class="botonNuevaCita" data-bs-toggle="modal" data-bs-target="#buscarCliModal2">Nueva Cita</button>
-        </div> --}} -->
-
-
-    </div>
-   {{--  <form action="">
-        <div class="row">
-            <div class="col-auto col-2">
-                <select class="form-select form-select-sm" name="Cambiar vista" id="">
-                    <option value="" selected disabled>Cambiar vista</option>
-                </select>
-            </div>
-        </div>
-    </form> --}}
-
-    <table class="table-container table table-striped">
+    <table class="table-container table table-striped" id="tablaProveedores">
         <thead>
             <tr>
                 <th>ID</th>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Pedido;
+use App\Models\Articulo;
 use App\Models\FacturaPedido;
 use Carbon\Carbon;
 
@@ -73,19 +74,32 @@ class PedidoController extends Controller
         }
     }
 
-    public function pagarPedido(Request $request){
-        $datos= $request->validate([
-            'fecha' => 'nullable|date',
-            'estadoPago' => 'nullable|string|max:255',
-            'idPedido' => 'required|integer',
-        ]);
-        //FacturaPedido::create($datos);
+    public function pagarPedido(Request $request)
+{
+    $datos = $request->validate([
+        'fecha' => 'nullable|date',
+        'estadoPago' => 'nullable|string|max:255',
+        'idPedido' => 'required|integer',
+    ]);
 
-        $pedidoActualizado=Pedido::find($datos['idPedido']);
-        if($pedidoActualizado){
-            $pedidoActualizado->estadoPago ='pagado';
-            $pedidoActualizado->save();
-        }
-        return redirect()->route('pedidos')->with('success', 'Pedido pagado correctamente.');
+    $pedido = Pedido::with('lineasPedido')->findOrFail($datos['idPedido']);
+
+    if ($pedido->lineasPedido->isEmpty()) {
+        return redirect()->back()->withErrors('El pedido no tiene artículos.');
     }
+
+
+    $pedido->estadoPago = 'pagado';
+    $pedido->save();
+
+   
+    foreach ($pedido->lineasPedido as $linea) {
+        $articulo = Articulo::find($linea->idArticulo);
+        if ($articulo) {
+            $articulo->stock += $linea->cantidad;
+            $articulo->save();
+        }
+    }
+    return redirect()->route('pedidos')->with('success', 'Pedido pagado correctamente.');
+}
 }

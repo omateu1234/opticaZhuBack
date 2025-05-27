@@ -6,7 +6,7 @@ return [
 
 'allowed_methods' => ['*'], // Permitir todos los métodos
 
-'allowed_origins' => ['http://localhost:4200'], // Aquí va el origen de tu frontend
+'allowed_origins' => ['http://localhost:4200' , 'https://0f8ced1f.opticazhufront-ej7.pages.dev/login'], // Aquí va el origen de tu frontend
 
 'allowed_origins_patterns' => [],
 

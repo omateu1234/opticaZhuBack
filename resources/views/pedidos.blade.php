@@ -22,7 +22,6 @@
     <table class="table-container table table-striped" id="tablaPedidos">
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Fecha</th>
                 <th>Estado</th>
                 <th>Metodo Pago</th>
@@ -38,7 +37,6 @@
                     @else
                         onclick="window.location='{{route('generarFactura', ['idPedido' => $pedido->id] )}}'"
                     @endif>
-                    <td>{{$pedido->id}}</td>
                     <td>{{$pedido->fecha}}</td>
                     <td>{{$pedido->estado}}</td>
                     <td>{{$pedido->metodoPago}}</td>

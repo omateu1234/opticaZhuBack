@@ -20,7 +20,6 @@
     <table class="table-container table table-striped" id="tablaProveedores">
         <thead>
             <tr>
-                <th>ID</th>
                 <th>NIF</th>
                 <th>Nombre</th>
                 <th>Dirección</th>
@@ -32,7 +31,6 @@
         <tbody>
             @forelse($proveedores as $proveedor)
             <tr class="table-row" onclick="window.location='{{route('perfilProv', $proveedor->id )}}'">
-                <td>{{$proveedor->id}}</td>
                 <td>{{$proveedor->nif}}</td>
                 <td>{{$proveedor->nombre}}</td>
                 <td>{{$proveedor->direccion}}</td>

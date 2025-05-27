@@ -8,21 +8,33 @@ use App\Models\Proveedor;
 
 class ProveedorController extends Controller
 {
+    /**
+     * Muestra todos los proveedores.
+     */
     function getAll(){
         $proveedores = Proveedor::all();
          return view('proveedores', compact('proveedores'));
     }
 
+    /**
+     * Envia a todos los proveedores en formato JSON.
+     */
     function getAllApi(){
         $proveedores = Proveedor::all();
         return response()->json($proveedores);
     }
 
+    /**
+     * Muestra la barra de navegación con todos los proveedores.
+     */
     function getAllSelect(){
         $proveedores = Proveedor::all();
         return view('navbar', compact('proveedores'));
     }
 
+    /**
+     * Muestra el perfil de un proveedor por su ID.
+     */
     function getById($id){
         //$proveedor = Proveedor::find($id);
         $proveedor = Proveedor::with('articulos')->find($id);
@@ -32,6 +44,10 @@ class ProveedorController extends Controller
         return view('perfilProv', compact('proveedor', 'articulos'));
     }
 
+    /**
+     * Busca un proveedor por NIF o nombre.
+     * Si no se encuentra, devuelve un mensaje de error.
+     */
     public function buscarProveedor($nif=null, $nombre=null){
         $query=Proveedor::with('articulos');
         if($nif){
@@ -47,6 +63,10 @@ class ProveedorController extends Controller
         return $proveedor;
     }
 
+    /**
+     * Obtiene un proveedor por NIF o nombre y muestra su perfil.
+     * Si no se encuentra, devuelve un mensaje de error.
+     */
     public function getByNifOrName(Request $request){
         $request->validate([
             'nif' => 'nullable|string|max:255',
@@ -64,6 +84,10 @@ class ProveedorController extends Controller
         return view('perfilProv', compact('proveedor', 'articulos'));
     }
 
+    /**
+     * Obtiene un proveedor por NIF o nombre y muestra los artículos disponibles para pedidos.
+     * Si no se encuentra, devuelve un mensaje de error.
+     */
     public function getByNifOrNamePedido(Request $request){
         $request->validate([
             'nif' => 'nullable|string|max:255',
@@ -88,7 +112,9 @@ class ProveedorController extends Controller
         //return view('perfilProv', compact('articulos'));
     }
 
-
+    /**
+     * Crea un nuevo proveedor.
+     */
     public function guardar(Request $request)
     {
         //dd($request);
@@ -107,6 +133,10 @@ class ProveedorController extends Controller
         return redirect()->route('proveedores');
     }
 
+    /**
+     * Obtiene los pedidos de un proveedor por NIF o nombre.
+     * Si no se encuentra, devuelve un mensaje de error.
+     */
     public function getPedidos(Request $request){
         $request->validate([
             'nif' => 'nullable|string|max:255',
@@ -124,6 +154,9 @@ class ProveedorController extends Controller
         return view('pedidosProveedor', compact('proveedor', 'pedidos'));
     }
 
+    /**
+     * Edita un proveedor por su ID.
+     */
     public function editar(Request $request){
         $datos=$request->validate([
             'id' => 'required|integer',

@@ -16,16 +16,14 @@ class FacturaPedidoController extends Controller
         $facturas=FacturaPedido::all();
     }
 
+    /**
+     * Genera una factura a partir de un pedido.
+     */
     public function generarFactura(Request $request){
         $idPedido = $request->input('idPedido');
         //dd($idPedido);
 
         if (!$idPedido) {
-            /* dd("Pedido no encontrado", [
-                'idPedido' => $idPedido,
-                'consulta' => Pedido::with('lineasPedido', 'proveedor')->toSql(),
-                'bindings' => Pedido::getBindings(),
-            ]); */
             dd($request->all());
         }
 
@@ -54,6 +52,9 @@ class FacturaPedidoController extends Controller
         return view('factura', compact('datosFactura'));
     }
 
+    /**
+     * Paga la factura de un pedido por si ID.
+     */
     public function pagarFactura(Request $request){
         $datos= $request->validate([
             'fecha' => 'required|date',
@@ -61,12 +62,6 @@ class FacturaPedidoController extends Controller
             'idPedido' => 'required|integer',
         ]);
         FacturaPedido::create($datos);
-
-       /*  $pedidoActualizado=Pedido::find($datos['idPedido']);
-        if($pedidoActualizado){
-            $pedidoActualizado->estado ='recibido';
-            $pedidoActualizado->save();
-        } */
 
         return redirect()->route('pedidos')->with('success', 'Factura guardada correctamente.');
     }

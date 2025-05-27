@@ -12,7 +12,9 @@ use App\Models\Cliente;
 
 class FacturaVentaController extends Controller
 {
-    //
+    /**
+     * Genera la factura de una venta por su ID
+     */
     public function generarFactura(Request $request){
         $idVenta = $request->input('idVenta');
         //dd($idVenta);
@@ -56,6 +58,10 @@ class FacturaVentaController extends Controller
         ];
         return response()->json($datosFactura);
     }
+
+    /**
+     * Paga una factura de venta y actualiza el estado de la venta.
+     */
     public function pagarFactura(Request $request){
         $datos= $request->validate([
             'fecha' => 'required|date',

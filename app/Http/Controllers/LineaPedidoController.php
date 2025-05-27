@@ -17,6 +17,9 @@ class LineaPedidoController extends Controller
         $lineas= LineaPedido::all();
     }
 
+    /**
+     * Guarda una nueva línea de pedido.
+     */
     public function guardar(Request $request){
 
         $articulos= $request->input('articulos', []);

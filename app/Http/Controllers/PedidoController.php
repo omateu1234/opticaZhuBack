@@ -12,11 +12,17 @@ use Carbon\Carbon;
 
 class PedidoController extends Controller
 {
+    /**
+     * Muestra todos los pedidos.
+     */
     public function getAll(){
         $pedidos = Pedido::with('proveedor', 'facturaPedido')->get();
         return view('pedidos', compact('pedidos'));
     }
 
+    /**
+     * Crea un nuevo pedido.
+     */
     public function guardar(Request $request){
 
         $datos= $request->validate([
@@ -30,6 +36,9 @@ class PedidoController extends Controller
         return redirect()->route('pedidos')->with('success', 'Pedido guardado correctamente.');
     }
 
+    /**
+     * Obtiene un pedido por su ID.
+     */
     public function getById($id){
         $pedido = Pedido::with('proveedores')->find($id);
 
@@ -39,6 +48,9 @@ class PedidoController extends Controller
         return view('pedido', compact('proveedor', 'articulos' ));
     }
 
+    /**
+     * Obtiene el proveedor de un pedido por su ID.
+     */
     public function getProveedor($id){
         $pedido = Pedido::find($id);
 
@@ -49,6 +61,9 @@ class PedidoController extends Controller
         return view('pedido', compact('proveedor', 'articulos', 'pedido' ));
     }
 
+    /**
+     * Actualiza el estado de un pedido a 'cancelado' por su ID.
+     */
     public function cancelarPedido($idPedido){
         $pedido = Pedido::find($idPedido);
         //dd($pedido);
@@ -61,6 +76,9 @@ class PedidoController extends Controller
         return redirect()->route('pedidos')->with('success', 'Pedido cancelado.');
     }
 
+    /**
+     * Recibe un pedido por su ID.
+     */
     public function recibirPedido($idPedido){
         $pedido = Pedido::with('facturaPedido')->findOrFail($idPedido);
         //dd($pedido);
@@ -74,8 +92,11 @@ class PedidoController extends Controller
         }
     }
 
+    /**
+     * Paga un pedido por su ID y actualiza el stock.
+     */
     public function pagarPedido(Request $request)
-{
+    {
     $datos = $request->validate([
         'fecha' => 'nullable|date',
         'estadoPago' => 'nullable|string|max:255',
@@ -92,7 +113,7 @@ class PedidoController extends Controller
     $pedido->estadoPago = 'pagado';
     $pedido->save();
 
-   
+
     foreach ($pedido->lineasPedido as $linea) {
         $articulo = Articulo::find($linea->idArticulo);
         if ($articulo) {

@@ -11,11 +11,17 @@ use Illuminate\Support\Facades\DB;
 
 class ArticuloController extends Controller
 {
+    /**
+     * Obtiene todos los articulos de la base de datos.
+     */
     public function getAll(){
         $articulos= Articulo::all();
         return response()->json($articulos);
     }
 
+    /**
+     * Obtiene un articulo por su ID.
+     */
     public function getById(Request $request){
         $request->validate([
             'id' => 'required|string|max:255',
@@ -39,6 +45,9 @@ class ArticuloController extends Controller
         ->header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     }
 
+    /**
+     * Guarda un nuevo articulo en la base de datos.
+     */
     public function guardar(Request $request){
         $datos= $request->validate([
             'nombre'=> 'required|string|max:255',
@@ -53,6 +62,9 @@ class ArticuloController extends Controller
         $articulo= Articulo::create($datos);
     }
 
+    /**
+     * Obtiene los articulos de una optica por su ID.
+     */
     public function articulosByOptica(Request $request){
         $datos= $request->validate([
             'idOptica' => 'required|integer'
@@ -65,7 +77,9 @@ class ArticuloController extends Controller
         return response()->json($articulos);
     }
 
-
+    /**
+     * Edita un articulo por su ID
+     */
     public function editar(Request $request){
         $datos= $request->validate([
             'id' => 'required|integer',

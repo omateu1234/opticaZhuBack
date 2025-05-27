@@ -17,6 +17,9 @@ class VentaController extends Controller
         return response()->json($ventas);
     }
 
+    /**
+     * Guarda una nueva venta en la base de datos.
+     */
     public function guardar(Request $request){
         $datos= $request->validate([
             'metodoPago' => 'required|string|max:255',
@@ -38,6 +41,9 @@ class VentaController extends Controller
     }
 
 
+    /**
+     * Actualiza el estado de una venta a 'cancelado'.
+     */
     public function cancelarVenta(Request $request){
 
         $datos= $request->validate([
@@ -57,6 +63,9 @@ class VentaController extends Controller
         }
     }
 
+    /**
+     * Obtiene todas las ventas de una óptica específica.
+     */
     public function getVentasByOptica(Request $request){
         $datos= $request->validate([
             'idOptica' => 'required'

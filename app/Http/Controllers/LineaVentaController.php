@@ -19,6 +19,9 @@ class LineaVentaController extends Controller
         return response()->json($lineas);
     }
 
+    /**
+     * Guarda una nueva línea de venta y actualiza el stock del artículo.
+     */
     public function guardar(Request $request){
 
         $articulos= $request->input('articulos', []);
